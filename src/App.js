@@ -147,6 +147,14 @@ function CalcView() {
 }
 
 function SearchModal({ onClose, onSelect }) {
+  // 勝手にスクロールされないように
+  React.useEffect(() => {
+    document.body.style.overflow = 'hidden'; // 開いた時にスクロール禁止
+    return () => {
+      document.body.style.overflow = 'unset'; // 閉じた時に戻す
+    };
+  }, []);
+  
   const [query, setQuery] = useState('');
   const kataQuery = hiraToKata(query);
   
