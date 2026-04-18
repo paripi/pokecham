@@ -186,7 +186,16 @@ function SearchModal({ onClose, onSelect }) {
   );
 }
 
-// --- 追加・修正するスタイル定義 ---
+const modalOverlayStyle = { 
+  position: 'fixed', 
+  inset: 0, 
+  backgroundColor: 'rgba(0,0,0,0.6)', 
+  display: 'flex', 
+  justifyContent: 'center', 
+  alignItems: 'flex-start', // 中央ではなく「上」を基準にする
+  paddingTop: '40px',       // 画面の一番上すぎないように少し隙間を開ける
+  zIndex: 100 
+};
 
 const modalContentStyle = { 
   backgroundColor: '#fff', 
@@ -194,8 +203,9 @@ const modalContentStyle = {
   borderRadius: '15px', 
   width: '85%', 
   maxWidth: '350px',
-  display: 'flex',
-  flexDirection: 'column'
+  boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+  // キーボードに押し上げられないよう、位置を固定的にする
+  position: 'relative' 
 };
 
 const resultContainerStyle = { 
@@ -262,7 +272,6 @@ const infoTextStyle = { fontSize: '0.55rem', fontWeight: 'normal', lineHeight: '
 const cellStyle = { width: cellWidth, height: '55px', border: '1px solid #e2e8f0', textAlign: 'center', fontSize: '1.2rem', backgroundColor: '#fff' };
 
 const registerCardStyle = { backgroundColor: '#fff', padding: '12px', borderRadius: '8px', marginBottom: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', cursor: 'pointer' };
-const modalOverlayStyle = { position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 };
 const inputStyle = { 
   width: '100%', 
   padding: '12px', 
