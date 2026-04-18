@@ -273,7 +273,7 @@ function SearchModal({ onClose, onSelect, mode }) {
             ))
           ) : (
             // 検索結果がない時も高さを維持するためのダミーメッセージ
-            <div style={noResultStyle}>一致するポケモンがいません</div>
+            <div style={noResultStyle}>一致するデータがありません</div>
           )}
         </div>
 
@@ -317,14 +317,12 @@ const modalContentStyle = {
 
 const resultContainerStyle = { 
   marginTop: '10px', 
-  // 1アイテム約50px × 6件分 ＝ 300px で固定
-  height: '300px', 
-  minHeight: '300px', 
-  maxHeight: '300px', 
-  overflowY: 'auto', // 溢れたらスクロール
+  flex: 1,           // 空きスペースをすべて使う
+  overflowY: 'auto', // ここでスクロールさせる
   border: '1px solid #edf2f7',
   borderRadius: '8px',
-  backgroundColor: '#fdfdfd'
+  backgroundColor: '#fdfdfd',
+  minHeight: '100px' // 最低限の高さは確保
 };
 
 const noResultStyle = {
