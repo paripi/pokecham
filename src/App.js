@@ -283,19 +283,19 @@ function SearchModal({ onClose, onSelect, mode }) {
   );
 }
 
+// SearchModal のスタイルを適用する関数
 const modalOverlayStyle = { 
   position: 'fixed', 
   top: 0, 
   left: 0, 
-  width: '100%',
-  height: '100dvh', // キーボード分を差し引いた高さを自動計算してくれる
+  width: '100vw',
+  height: '100vh', // 100dvhより100vhの方がiOSキーボード対応では安定することがある
   backgroundColor: 'rgba(0,0,0,0.6)', 
   display: 'flex', 
   justifyContent: 'center', 
-  alignItems: 'flex-start',
-  paddingTop: '20px', 
-  zIndex: 9999, // 最前面へ
-  overflow: 'hidden' // ここで背後のスクロールを完全に殺す
+  alignItems: 'center', // 垂直中央配置に変更
+  zIndex: 9999,
+  padding: '10px' // 周囲の余裕
 };
 
 const modalContentStyle = { 
@@ -304,15 +304,11 @@ const modalContentStyle = {
   borderRadius: '15px', 
   width: '90%', 
   maxWidth: '400px',
-  maxHeight: '90vh',      // 画面の90%を超えない
-  height: 'auto',         // 内容量に応じて高さが変わる
-  minHeight: '200px',     // 最低でもこれくらいは確保
+  maxHeight: '80vh', // 画面高さの80%までに制限（キーボード分の余裕）
   display: 'flex', 
   flexDirection: 'column',
-  position: 'fixed',      // 画面に対して固定
-  top: '5%',              // 上からの位置を固定
-  left: '50%',            // 画面の真ん中に持ってくる
-  transform: 'translateX(-50%)' // 真ん中に配置するテクニック
+  // position: 'fixed' を削除（親のflexで中央配置されるため不要）
+  boxSizing: 'border-box'
 };
 
 const resultContainerStyle = { 
