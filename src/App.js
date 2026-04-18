@@ -217,11 +217,17 @@ function SearchModal({ onClose, onSelect, mode }) {
   }, []);
   
   const [query, setQuery] = useState('');
-  const kataQuery = hiraToKata(query);
+  const normalize = (str) => {
+      if (!str) return "";
+      return hiraToKata(str)                // 1. ひらがなをカタカナに
+        .toLowerCase()                      // 2. アルファベットを小文字に
+        .replace(/[・\s　]/g, "")           // 3. 中黒、スペース（全角・半角）を除去
+        .replace(/[ぁ-ん]/g, m => String.fromCharCode(m.charCodeAt(0) + 0x60)); // 念のためカタカナに
+    };
   
   const data = mode === 'move' ? MOVE_DB : POKEMON_DB;
   // 常に8件分くらいのスペースを確保するためのリスト作成
-  const results = data.filter(item => item.name.includes(kataQuery));
+  const results = data.filter(item => normalize(item.name).includes(normalize(query)));
   return (
     <div style={modalOverlayStyle}>
       <div style={modalContentStyle}>
@@ -267,13 +273,17 @@ function SearchModal({ onClose, onSelect, mode }) {
 
 const modalOverlayStyle = { 
   position: 'fixed', 
-  inset: 0, 
+  top: 0, 
+  left: 0, 
+  width: '100%',
+  height: '100dvh', // キーボード分を差し引いた高さを自動計算してくれる
   backgroundColor: 'rgba(0,0,0,0.6)', 
   display: 'flex', 
   justifyContent: 'center', 
-  alignItems: 'flex-start', // 中央ではなく「上」を基準にする
-  paddingTop: '40px',       // 画面の一番上すぎないように少し隙間を開ける
-  zIndex: 100 
+  alignItems: 'flex-start',
+  paddingTop: '20px', 
+  zIndex: 9999, // 最前面へ
+  overflow: 'hidden' // ここで背後のスクロールを完全に殺す
 };
 
 const modalContentStyle = { 
