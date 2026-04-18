@@ -4,6 +4,7 @@ export const hiraToKata = (str) => {
   });
 };
 
+// ポケモン一覧（name,h,a,b,c,d,s,ts,type）
 export const POKEMON_DB = [
   { name: "メガフーディン", h: 55, a: 50, b: 65, c: 175, d: 105, s: 150, ts: 222 , type: "エ" },
   { name: "メガプテラ", h: 80, a: 135, b: 85, c: 70, d: 95, s: 150, ts: 222 , type: "岩 飛" },
@@ -285,3 +286,5493 @@ export const POKEMON_DB = [
   { name: "メガバクーダ", h: 70, a: 120, b: 100, c: 145, d: 105, s: 20, ts: 79 , type: "炎 地" },
   { name: "コータス", h: 70, a: 85, b: 140, c: 85, d: 70, s: 20, ts: 79 , type: "炎" }
  ];
+// 技一覧（name,type,category,power,accuracy,pp,tags,description）
+export const MOVE_DB = [ 
+  {
+    "name": "DDラリアット",
+    "type": "あく",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の能力変化を無視してダメージを与える。"
+  },
+  {
+    "name": "Gのちから",
+    "type": "でんき",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の防御を1段階下げる。じゅうりょく状態の場合、威力が1.5倍になる。"
+  },
+  {
+    "name": "10まんばりき",
+    "type": "じめん",
+    "category": "物理",
+    "power": 95,
+    "accuracy": 95,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触通常の攻撃技。"
+  },
+  {
+    "name": "10まんボルト",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "10%の確率で相手をまひ状態にする。"
+  },
+  {
+    "name": "3ぼんのや",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "50%の確率で相手の防御を1段階下げる。30%の確率で相手を怯ませる。急所アップ+1で攻撃する。"
+  },
+  {
+    "name": "アイアンテール",
+    "type": "はがね",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触30%の確率で相手の防御を1段階下げる。"
+  },
+  {
+    "name": "アイアンヘッド",
+    "type": "はがね",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触20%の確率で相手をひるませる。"
+  },
+  {
+    "name": "アイアンローラー",
+    "type": "はがね",
+    "category": "物理",
+    "power": 130,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触場にフィールドがない場合失敗する。フィールドを解除する。"
+  },
+  {
+    "name": "アイススピナー",
+    "type": "こおり",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触フィールドを解除する。"
+  },
+  {
+    "name": "アイスハンマー",
+    "type": "こおり",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ自分の素早さを1段階下げる。"
+  },
+  {
+    "name": "アクアカッター",
+    "type": "みず",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "切り"
+    ],
+    "description": "切りきゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "アクアジェット",
+    "type": "みず",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "優先度+1"
+    ],
+    "description": "接触優先度+1必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "アクアステップ",
+    "type": "みず",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "踊り"
+    ],
+    "description": "接触踊り自分の素早さを1段階上げる。"
+  },
+  {
+    "name": "アクアテール",
+    "type": "みず",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触通常の攻撃技。"
+  },
+  {
+    "name": "アクアブレイク",
+    "type": "みず",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触20%の確率で相手の防御を1段階下げる。"
+  },
+  {
+    "name": "アクアリング",
+    "type": "みず",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分はアクアリング状態になる。"
+  },
+  {
+    "name": "アクセルロック",
+    "type": "いわ",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "優先度+1"
+    ],
+    "description": "接触優先度+1必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "あくのはどう",
+    "type": "あく",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "波動"
+    ],
+    "description": "波動20%の確率で相手をひるませる。"
+  },
+  {
+    "name": "あくび",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "相手をねむけ状態にする。相手に必ず命中する。"
+  },
+  {
+    "name": "アクロバット",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 55,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分が道具を持っていない場合威力が2倍になる。"
+  },
+  {
+    "name": "あさのひざし",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分のHPを最大HPの1/2回復する。にほんばれ状態の場合は2/3回復する。それ以外の天気の場合は1/4回復する。"
+  },
+  {
+    "name": "アシストパワー",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "自分の能力変化が1段階上がるごとに、この技は威力は20上がる。"
+  },
+  {
+    "name": "アシッドボム",
+    "type": "どく",
+    "category": "特殊",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾相手の特防を2段階下げる。"
+  },
+  {
+    "name": "あなをほる",
+    "type": "じめん",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触使ったターンで地中状態になり、次のターンで攻撃する。"
+  },
+  {
+    "name": "あばれる",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分はあばれ状態になる。"
+  },
+  {
+    "name": "あまいかおり",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の回避率を2段階下げる。"
+  },
+  {
+    "name": "あまえる",
+    "type": "フェアリー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の攻撃を2段階下げる。"
+  },
+  {
+    "name": "あまごい",
+    "type": "みず",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [],
+    "description": "5ターンの間あめ状態にする。"
+  },
+  {
+    "name": "あやしいひかり",
+    "type": "ゴースト",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手をこんらん状態にする。"
+  },
+  {
+    "name": "アロマミスト",
+    "type": "フェアリー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "味方の特防を1段階上げる。"
+  },
+  {
+    "name": "アンコール",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "メンタル"
+    ],
+    "description": "メンタル相手をアンコール状態にする。"
+  },
+  {
+    "name": "アーマーキャノン",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "自分の防御と特防が1段階ずつ下がる。"
+  },
+  {
+    "name": "アームハンマー",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ自分の素早さを1段階下げる。"
+  },
+  {
+    "name": "いえき",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手をとくせいなし状態にする。"
+  },
+  {
+    "name": "イカサマ",
+    "type": "あく",
+    "category": "物理",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の攻撃ではなく相手の攻撃の能力値でダメージが決まる。"
+  },
+  {
+    "name": "いかりのこな",
+    "type": "むし",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "優先度+2"
+    ],
+    "description": "優先度+2相手の技を全て自分が受ける。相手を選ぶ技にしか効果はない。"
+  },
+  {
+    "name": "いかりのまえば",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の残りHPの1/2のダメージを与える。残り1の場合は1ダメージを与える。"
+  },
+  {
+    "name": "いたみわけ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分と相手の残りHPを足して互いに1/2ずつに分ける。"
+  },
+  {
+    "name": "いちゃもん",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "メンタル"
+    ],
+    "description": "メンタル相手を連続不可状態にする。"
+  },
+  {
+    "name": "いとをはく",
+    "type": "むし",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 95,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の素早さを2段階下げる。"
+  },
+  {
+    "name": "いのちがけ",
+    "type": "かくとう",
+    "category": "特殊",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "自分はひんしになりその時に残っていたHP分のダメージを与える。"
+  },
+  {
+    "name": "いのちのしずく",
+    "type": "みず",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分と味方のHPをそれぞれ最大HPの1/4ずつ回復する。"
+  },
+  {
+    "name": "いばる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 85,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の攻撃を2段階上げこんらん状態にする。"
+  },
+  {
+    "name": "いびき",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "音"
+    ],
+    "description": "音自分がねむり状態の場合使うことができる。30%の確率で相手をひるませる。"
+  },
+  {
+    "name": "いやしのすず",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "音"
+    ],
+    "description": "音自分と味方と手持ちポケモン全員の状態異常を回復する。"
+  },
+  {
+    "name": "いやしのねがい",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分はひんしになるが次にこちらが出すポケモンのHPを全回復し状態異常を回復する。"
+  },
+  {
+    "name": "いやしのはどう",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [
+      "波動"
+    ],
+    "description": "波動相手のHPを最大HPの1/2回復する。"
+  },
+  {
+    "name": "いやなおと",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 85,
+    "pp": 20,
+    "tags": [
+      "音"
+    ],
+    "description": "音相手の防御を2段階下げる。"
+  },
+  {
+    "name": "いわなだれ",
+    "type": "いわ",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "30%の確率で相手をひるませる。"
+  },
+  {
+    "name": "インファイト",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の防御と特防が1段階下がる。"
+  },
+  {
+    "name": "ウェザーボール",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾天気が変わっていると、威力が2倍になりタイプも変わる。にほんばれ状態：ほのお、あめ状態：みず、ゆき状態：こおり、すなあらし状態：いわ。"
+  },
+  {
+    "name": "ウェーブタックル",
+    "type": "みず",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触与えたダメージの1/3を自分も受ける。"
+  },
+  {
+    "name": "うずしお",
+    "type": "みず",
+    "category": "特殊",
+    "power": 35,
+    "accuracy": 85,
+    "pp": 16,
+    "tags": [],
+    "description": "相手をバインド状態にする。水中状態の相手には、威力が2倍になる。"
+  },
+  {
+    "name": "うそなき",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の特防を2段階下げる。"
+  },
+  {
+    "name": "うたう",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 55,
+    "pp": 16,
+    "tags": [
+      "音"
+    ],
+    "description": "音相手をねむり状態にする。"
+  },
+  {
+    "name": "うたかたのアリア",
+    "type": "みず",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "音"
+    ],
+    "description": "音相手のやけど状態を治す。"
+  },
+  {
+    "name": "うちおとす",
+    "type": "いわ",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "地面にいない相手を着地状態にする。空中状態の相手にも当たる。"
+  },
+  {
+    "name": "ウッドハンマー",
+    "type": "でんき",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触与えたダメージの1/3を自分も受ける。"
+  },
+  {
+    "name": "ウッドホーン",
+    "type": "でんき",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 10,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手に与えたダメージの1/2を自分のHPを回復する。"
+  },
+  {
+    "name": "うっぷんばらし",
+    "type": "あく",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "使ったターンに自分の能力が下がっている場合威力が2倍になる"
+  },
+  {
+    "name": "うらみ",
+    "type": "ゴースト",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手が最後に使用した技のPPを4減らす。"
+  },
+  {
+    "name": "エアカッター",
+    "type": "ひこう",
+    "category": "特殊",
+    "power": 60,
+    "accuracy": 95,
+    "pp": 20,
+    "tags": [
+      "切り",
+      "風"
+    ],
+    "description": "切り風きゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "エアスラッシュ",
+    "type": "ひこう",
+    "category": "特殊",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [
+      "切り"
+    ],
+    "description": "切り30%の確率で相手をひるませる。"
+  },
+  {
+    "name": "エナジーボール",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾10%の確率で相手の特防を1段階下げる。"
+  },
+  {
+    "name": "エレキネット",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の素早さを1段階下げる。"
+  },
+  {
+    "name": "エレキフィールド",
+    "type": "くさ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "5ターンの間、全体の場をエレキフィールド状態にする。"
+  },
+  {
+    "name": "エレキボール",
+    "type": "くさ",
+    "category": "特殊",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾自分の素早さが相手より高いほど威力が上がる。威力40ー150。"
+  },
+  {
+    "name": "エレクトロビーム",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 130,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "使ったターンで溜め状態になり次のターンで攻撃する。あめ状態の場合は溜め状態にならずすぐに攻撃できる。使ったターンに自分の特攻を1段階上げる。"
+  },
+  {
+    "name": "おいかぜ",
+    "type": "ひこう",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [
+      "風"
+    ],
+    "description": "風4ターンの間、味方の場をおいかぜ状態にする。"
+  },
+  {
+    "name": "おかたづけ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "全体の場のねばねばネット状態、ステルスロック状態、みがわり状態、まきびし状態、どくびし状態を解除する。自分の攻撃と素早さを1段階上げる。"
+  },
+  {
+    "name": "おきみやげ",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "自分はひんしになるが相手の攻撃と特攻を2段階下げる。"
+  },
+  {
+    "name": "おさきにどうぞ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "相手の行動を自分の行動のすぐ後にする。"
+  },
+  {
+    "name": "おたけび",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "音"
+    ],
+    "description": "音相手の攻撃と特攻を1段階下げる。"
+  },
+  {
+    "name": "おだてる",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の特攻を1段階下げ、こんらん状態にする。"
+  },
+  {
+    "name": "おちゃかい",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "場の全員はそれぞれ持っているきのみを食べて使う。"
+  },
+  {
+    "name": "おにび",
+    "type": "ほのお",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 85,
+    "pp": 16,
+    "tags": [],
+    "description": "相手をやけど状態にする。"
+  },
+  {
+    "name": "おはかまいり",
+    "type": "ゴースト",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "手持ちのポケモンが1匹ひんしになるたび威力が50上がる。"
+  },
+  {
+    "name": "オーバーヒート",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 130,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "自分の特攻を2段階下げる。"
+  },
+  {
+    "name": "オーラぐるま",
+    "type": "くさ",
+    "category": "物理",
+    "power": 110,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "自分の素早さを1段階上げる。モルペコのフォルムでタイプが変わる。"
+  },
+  {
+    "name": "オーロラベール",
+    "type": "こおり",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "5ターンの間、味方の場をオーロラベール状態にする。ゆき状態の場合にしか使えない。"
+  },
+  {
+    "name": "かいでんぱ",
+    "type": "くさ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の特攻を2段階下げる。"
+  },
+  {
+    "name": "カウンター",
+    "type": "かくとう",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "優先度-5"
+    ],
+    "description": "接触優先度-5使ったターンに相手から受けた物理技のダメージを2倍にして返す。"
+  },
+  {
+    "name": "かえんほうしゃ",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "10%の確率で相手をやけど状態にする。"
+  },
+  {
+    "name": "かかとおとし",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触30%の確率で相手をこんらん状態にする。外れるか失敗すると自分の最大HPの1/2のダメージを受ける。"
+  },
+  {
+    "name": "かげうち",
+    "type": "ゴースト",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "優先度+1"
+    ],
+    "description": "接触優先度+1必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "かげぬい",
+    "type": "ゴースト",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手をにげられない状態にする。"
+  },
+  {
+    "name": "かげぶんしん",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "自分の回避率を1段階上げる。"
+  },
+  {
+    "name": "かなしばり",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "メンタル"
+    ],
+    "description": "メンタル4ターンの間、相手をわざふうじ状態にする。"
+  },
+  {
+    "name": "かふんだんご",
+    "type": "むし",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾味方に使用するとダメージは与えず、最大HPの半分を回復する。"
+  },
+  {
+    "name": "かみくだく",
+    "type": "あく",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "噛み"
+    ],
+    "description": "接触噛み20%の確率で相手の防御を1段階下げる。"
+  },
+  {
+    "name": "かみつく",
+    "type": "あく",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "噛み"
+    ],
+    "description": "接触噛み30%の確率で相手をひるませる。"
+  },
+  {
+    "name": "かみなり",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 110,
+    "accuracy": 70,
+    "pp": 12,
+    "tags": [],
+    "description": "30%の確率で相手をまひ状態にする。あめ状態の場合、相手に必ず命中する。空中状態の相手にも当たる。"
+  },
+  {
+    "name": "かみなりのキバ",
+    "type": "くさ",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "噛み"
+    ],
+    "description": "接触噛み10%の確率で相手をまひ状態にする。10%の確率で相手をひるませる。"
+  },
+  {
+    "name": "かみなりパンチ",
+    "type": "くさ",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ10%の確率で相手をまひ状態にする。"
+  },
+  {
+    "name": "がむしゃら",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の残りHPから自分の残りHPを引いた数値のダメージを与える。相手のHPが自分のHP以下なら失敗する。"
+  },
+  {
+    "name": "からげんき",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分がどく状態、もうどく状態、まひ状態、やけど状態のいずれかの場合は威力が2倍になる。やけど状態による物理技のダメージが半減される効果は無視する。"
+  },
+  {
+    "name": "からをやぶる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "自分の防御・特防を1段階下げて、攻撃・特攻・素早さを2段階上げる。"
+  },
+  {
+    "name": "かわらわり",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の場のひかりのかべ状態、リフレクター状態、オーロラベール状態を解除して攻撃する。"
+  },
+  {
+    "name": "がんせきアックス",
+    "type": "いわ",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 90,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り相手の場をステルスロック状態にする。"
+  },
+  {
+    "name": "がんせきふうじ",
+    "type": "いわ",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の素早さを1段階下げる。"
+  },
+  {
+    "name": "がんせきほう",
+    "type": "いわ",
+    "category": "物理",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾使った次のターン、自分は反動状態になる。"
+  },
+  {
+    "name": "ガードシェア",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分と相手の防御の数値と特防の数値を足して互いに1/2ずつに分ける。"
+  },
+  {
+    "name": "ガードスワップ",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分の防御と特防の能力変化を相手の防御と特防の能力変化と入れ替える。"
+  },
+  {
+    "name": "きあいだま",
+    "type": "かくとう",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 8,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾10%の確率で相手の特防を1段階下げる。"
+  },
+  {
+    "name": "きあいだめ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分はきゅうしょアップ状態+2になる。"
+  },
+  {
+    "name": "きあいパンチ",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "パンチ",
+      "優先度-3"
+    ],
+    "description": "接触優先度-3パンチ自分が技を使うターンで、先に相手からの技のダメージを受けると失敗する。"
+  },
+  {
+    "name": "ギガインパクト",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触使った次のターン、自分は反動状態になる。"
+  },
+  {
+    "name": "ギガドレイン",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手に与えたダメージの1/2自分のHPを回復する。"
+  },
+  {
+    "name": "きしかいせい",
+    "type": "かくとう",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の残りHPが少ないほど威力が上がる。威力20-200。"
+  },
+  {
+    "name": "きまぐレーザー",
+    "type": "ドラゴン",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "30%の確率で威力が2倍になる。"
+  },
+  {
+    "name": "きゅうけつ",
+    "type": "むし",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手に与えたダメージの1/2自分のHPを回復する。"
+  },
+  {
+    "name": "キラースピン",
+    "type": "どく",
+    "category": "物理",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分にかかっているバインド状態・やどりぎのタネ状態と、味方の場にかかっているまきびし状態・どくびし状態・ねばねばネット状態・ステルスロック状態を解除する。相手をどく状態にする。"
+  },
+  {
+    "name": "きりばらい",
+    "type": "ひこう",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "相手の回避率を1段階下げる。リフレクター、まきびし、しんぴのまもり、フィールド等を解除する。"
+  },
+  {
+    "name": "キングシールド",
+    "type": "はがね",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "優先度+4"
+    ],
+    "description": "優先度+4使ったターン中 相手の攻撃から身を守り接触技をしてきた相手の攻撃を1段階下げる。シールドフォルムにフォルムチェンジする。連続で使うと成功率が前に使った時の1/3になる"
+  },
+  {
+    "name": "きんぞくおん",
+    "type": "はがね",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 85,
+    "pp": 20,
+    "tags": [
+      "音"
+    ],
+    "description": "音相手の特防を2段階下げる。"
+  },
+  {
+    "name": "クイックターン",
+    "type": "みず",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触攻撃した後、手持ちの他のポケモンと交代する。"
+  },
+  {
+    "name": "くさむすび",
+    "type": "でんき",
+    "category": "特殊",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手が重いほど威力が上がる。威力20-120。"
+  },
+  {
+    "name": "くさわけ",
+    "type": "でんき",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の素早さを1段階上げる。"
+  },
+  {
+    "name": "くすぐる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の攻撃と防御を1段階下げる。"
+  },
+  {
+    "name": "くちばしキャノン",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "弾",
+      "優先度-3"
+    ],
+    "description": "優先度-3弾技を使う前に接触技を受けると、その相手をやけど状態にする。"
+  },
+  {
+    "name": "グラススライダー",
+    "type": "でんき",
+    "category": "物理",
+    "power": 55,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触グラスフィールド状態の効果を受けている場合、優先度+1になる。"
+  },
+  {
+    "name": "グラスフィールド",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "5ターンの間、全体の場をグラスフィールド状態にする。"
+  },
+  {
+    "name": "クラブハンマー",
+    "type": "みず",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 95,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触きゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "クリアスモッグ",
+    "type": "どく",
+    "category": "特殊",
+    "power": 50,
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "相手の能力変化を元に戻す。相手に必ず命中する。"
+  },
+  {
+    "name": "くろいきり",
+    "type": "こおり",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "全体の場の能力変化をなくす。"
+  },
+  {
+    "name": "くろいまなざし",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [],
+    "description": "相手をにげられない状態にする。"
+  },
+  {
+    "name": "クロスチョップ",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 80,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触きゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "クロスポイズン",
+    "type": "どく",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り10%の確率で相手をどく状態にする。きゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "げきりん",
+    "type": "ドラゴン",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分はあばれ状態になる。"
+  },
+  {
+    "name": "けたぐり",
+    "type": "かくとう",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手が重いほど威力が上がる。威力20-120。"
+  },
+  {
+    "name": "ゲップ",
+    "type": "どく",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "戦闘中にきのみを食べていない場合、この技は失敗する。"
+  },
+  {
+    "name": "げんしのちから",
+    "type": "いわ",
+    "category": "特殊",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "10%の確率で自分の攻撃、防御、特攻、特防、素早さを1段階上げる。"
+  },
+  {
+    "name": "こうごうせい",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分のHPを最大HPの1/2回復する。にほんばれ状態の場合は2/3回復する。それ以外の天気の場合は1/4回復する。"
+  },
+  {
+    "name": "こうそくいどう",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の素早さを2段階上げる。"
+  },
+  {
+    "name": "こうそくスピン",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分にかかっているバインド状態・やどりぎのタネ状態と、味方の場にかかっているまきびし状態・どくびし状態・ねばねばネット状態・ステルスロック状態を解除する。自分の素早さを1段階上げる。"
+  },
+  {
+    "name": "こおりのいぶき",
+    "type": "こおり",
+    "category": "特殊",
+    "power": 60,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "必ず急所に当たる。"
+  },
+  {
+    "name": "こおりのキバ",
+    "type": "こおり",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "噛み"
+    ],
+    "description": "接触噛み10%の確率で相手をこおり状態にする。10％の確率で相手をひるませる。"
+  },
+  {
+    "name": "こおりのつぶて",
+    "type": "こおり",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "優先度+1"
+    ],
+    "description": "優先度+1必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "こごえるかぜ",
+    "type": "こおり",
+    "category": "特殊",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [
+      "風"
+    ],
+    "description": "風相手の素早さを1段階下げる。"
+  },
+  {
+    "name": "コスモパワー",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の防御、特防を1段階上げる。"
+  },
+  {
+    "name": "コットンガード",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分の防御を3段階上げる。"
+  },
+  {
+    "name": "ゴッドバード",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "使ったターンで溜め状態になり、次のターンで攻撃する。30%の確率で相手をひるませる。きゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "このゆびとまれ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "優先度+2"
+    ],
+    "description": "優先度+2相手の技を全て自分が受ける。相手を選ぶ技にしか効果はない。"
+  },
+  {
+    "name": "コメットパンチ",
+    "type": "はがね",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ20%の確率で自分の攻撃を1段階上げる。"
+  },
+  {
+    "name": "こらえる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [
+      "優先度+4"
+    ],
+    "description": "優先度+4使ったターン中はひんしになる技のダメージを受けると、HPを1残して耐える。連続で使うと成功率が前に使った時の1/3になる。"
+  },
+  {
+    "name": "こわいかお",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の素早さを2段階下げる。"
+  },
+  {
+    "name": "ゴーストダイブ",
+    "type": "ゴースト",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触使ったターンで潜伏状態になり次のターンで攻撃する。まもる みきり等の効果を解除して攻撃する。"
+  },
+  {
+    "name": "コーチング",
+    "type": "かくとう",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "味方の攻撃防御を1段階上げる。"
+  },
+  {
+    "name": "サイコカッター",
+    "type": "エスパー",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "切り"
+    ],
+    "description": "切りきゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "サイコキネシス",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "10%の確率で相手の特防を1段階下げる。"
+  },
+  {
+    "name": "サイコショック",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の防御の能力値でダメージ計算する。"
+  },
+  {
+    "name": "サイコノイズ",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "音"
+    ],
+    "description": "音2ターンの間、相手をかいふくふうじ状態にする。"
+  },
+  {
+    "name": "サイコファング",
+    "type": "エスパー",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "噛み"
+    ],
+    "description": "接触噛み相手の場のひかりのかべ状態、リフレクター状態、オーロラベール状態を解除して攻撃する。"
+  },
+  {
+    "name": "サイコフィールド",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "5ターンの間全体の場をサイコフィールド状態にする。"
+  },
+  {
+    "name": "サイドチェンジ",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [
+      "優先度+2"
+    ],
+    "description": "優先度+2自分と味方の場所を入れ替える。連続で使うと成功率が前に使った時の1/3になる。"
+  },
+  {
+    "name": "さいはい",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "相手が直前に使った技をもう1度使わせる。"
+  },
+  {
+    "name": "さいみんじゅつ",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 60,
+    "pp": 20,
+    "tags": [],
+    "description": "相手をねむり状態にする。"
+  },
+  {
+    "name": "さきおくり",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の行動の順番をそのターンの最後にする。"
+  },
+  {
+    "name": "さむいギャグ",
+    "type": "こおり",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "5ターンの間ゆき状態にする。手持ちの他のポケモンと交代する。"
+  },
+  {
+    "name": "さわぐ",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "音"
+    ],
+    "description": "音自分はさわぐ状態になる。"
+  },
+  {
+    "name": "サンダーダイブ",
+    "type": "くさ",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触外れるか失敗すると自分の最大HPの1/2のダメージを受ける。ちいさくなる状態の相手には威力が2倍になり必ず命中する。"
+  },
+  {
+    "name": "ジェットパンチ",
+    "type": "みず",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "パンチ",
+      "優先度+1"
+    ],
+    "description": "接触優先度+1パンチ必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "シェルアームズ",
+    "type": "どく",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "20%の確率で相手をどく状態にする。物理技である方がダメージが大きい場合は物理技になる。"
+  },
+  {
+    "name": "シェルブレード",
+    "type": "みず",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り50%の確率で相手の防御を1段階下げる。"
+  },
+  {
+    "name": "しおづけ",
+    "type": "いわ",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "相手をしおづけ状態にする。"
+  },
+  {
+    "name": "しおふき",
+    "type": "みず",
+    "category": "特殊",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "自分の残りHPが少ないほど威力が下がる。威力1ー150。"
+  },
+  {
+    "name": "じこあんじ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "相手にかかっている能力変化を自分にもかける。"
+  },
+  {
+    "name": "じごくづき",
+    "type": "あく",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手をじごくづき状態にする。"
+  },
+  {
+    "name": "じこさいせい",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分のHPのを最大HPの1/2回復する。"
+  },
+  {
+    "name": "シザークロス",
+    "type": "むし",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り通常の攻撃技。"
+  },
+  {
+    "name": "じしん",
+    "type": "じめん",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "地中状態の相手には威力が2倍になる。グラスフィールド状態の時、威力が1/2になる。"
+  },
+  {
+    "name": "じたばた",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の残りHPが少ないほど威力が上がる。威力20ー200。"
+  },
+  {
+    "name": "じだんだ",
+    "type": "じめん",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触前のターン自分が動けなかったり技を外したり失敗していた場合、威力が2倍になる。"
+  },
+  {
+    "name": "しっとのほのお",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "使ったターンに相手の能力が上がっている場合、相手をやけど状態にする。"
+  },
+  {
+    "name": "しっぺがえし",
+    "type": "あく",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手より後に攻撃すると技の威力が2倍になる。"
+  },
+  {
+    "name": "しっぽきり",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分のHPを最大HPの1/2減らし、みがわりを出す。その後、手持ちの他のポケモンと交代する。みがわりは自分の代わりに技を受ける。最大HPの1/4分のダメージを受けると消える。"
+  },
+  {
+    "name": "じならし",
+    "type": "じめん",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の素早さを1段階下げる。グラスフィールド状態の時、威力が1/2になる。"
+  },
+  {
+    "name": "しねんのずつき",
+    "type": "エスパー",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 90,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触20%の確率で相手をひるませる。"
+  },
+  {
+    "name": "じばく",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 200,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "爆発"
+    ],
+    "description": "爆発使うと自分はひんしになる。"
+  },
+  {
+    "name": "じばそうさ",
+    "type": "くさ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "特性が プラス マイナス である自分と味方の防御 特防を1段階上げる。"
+  },
+  {
+    "name": "しびれごな",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 75,
+    "pp": 20,
+    "tags": [
+      "粉"
+    ],
+    "description": "粉相手をまひ状態にする。"
+  },
+  {
+    "name": "しめつける",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 15,
+    "accuracy": 85,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手をバインド状態にする。"
+  },
+  {
+    "name": "ジャイロボール",
+    "type": "はがね",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触",
+      "弾"
+    ],
+    "description": "接触弾自分の素早さが相手より低いほど威力が大きくなる。威力1-150。"
+  },
+  {
+    "name": "シャカシャカほう",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 90,
+    "pp": 16,
+    "tags": [],
+    "description": "相手に与えたダメージの1/2自分のHPを回復する。20%の確率で相手をやけど状態にする。"
+  },
+  {
+    "name": "シャドークロー",
+    "type": "ゴースト",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切りきゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "シャドーパンチ",
+    "type": "ゴースト",
+    "category": "物理",
+    "power": 60,
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ相手に必ず命中する。"
+  },
+  {
+    "name": "シャドーボール",
+    "type": "ゴースト",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾20%の確率で相手の特防を1段階下げる。"
+  },
+  {
+    "name": "じゃれつく",
+    "type": "フェアリー",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触10%の確率で相手の攻撃を1段階下げる。"
+  },
+  {
+    "name": "じゅうでん",
+    "type": "くさ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の特防を1段階上げる。でんき威力アップ状態になる。"
+  },
+  {
+    "name": "じゅうりょく",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [],
+    "description": "5ターンの間、全体の場をじゅうりょく状態にする。"
+  },
+  {
+    "name": "じわれ",
+    "type": "じめん",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 30,
+    "pp": 8,
+    "tags": [],
+    "description": "相手をひんしにする。命中率30%固定。"
+  },
+  {
+    "name": "しんくうは",
+    "type": "かくとう",
+    "category": "特殊",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "優先度+1"
+    ],
+    "description": "優先度+1必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "しんそく",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触",
+      "優先度+2"
+    ],
+    "description": "接触優先度+2必ず先制できる。(優先度+2)"
+  },
+  {
+    "name": "じんつうりき",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "10%の確率で相手をひるませる。"
+  },
+  {
+    "name": "しんぴのまもり",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "5ターンの間、味方の場をしんぴのまもり状態にする。"
+  },
+  {
+    "name": "シンプルビーム",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の特性をたんじゅんにする。"
+  },
+  {
+    "name": "スイープビンタ",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 25,
+    "accuracy": 85,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触2ー5回連続で攻撃する。"
+  },
+  {
+    "name": "スキルスワップ",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分と相手の特性を入れ替える。"
+  },
+  {
+    "name": "スケイルショット",
+    "type": "ドラゴン",
+    "category": "物理",
+    "power": 25,
+    "accuracy": 90,
+    "pp": 20,
+    "tags": [],
+    "description": "2ー5回連続で攻撃する。自分の防御を1段階下げ、素早さを1段階上げる。"
+  },
+  {
+    "name": "スケイルノイズ",
+    "type": "ドラゴン",
+    "category": "特殊",
+    "power": 110,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "音"
+    ],
+    "description": "音自分の防御を1段階下げる。"
+  },
+  {
+    "name": "すてゼリフ",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "音"
+    ],
+    "description": "音相手の攻撃、特攻を1段階下げ、自分は手持ちの他のポケモンと交代する。"
+  },
+  {
+    "name": "すてみタックル",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触与えたダメージの1/3を自分も受ける。"
+  },
+  {
+    "name": "ステルスロック",
+    "type": "いわ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "相手の場をステルスロック状態にする。"
+  },
+  {
+    "name": "ストーンエッジ",
+    "type": "いわ",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 80,
+    "pp": 8,
+    "tags": [],
+    "description": "きゅうしょアップ＋1で攻撃する。"
+  },
+  {
+    "name": "すなあらし",
+    "type": "いわ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "風"
+    ],
+    "description": "風5ターンの間すなあらし状態にする。"
+  },
+  {
+    "name": "すなじごく",
+    "type": "じめん",
+    "category": "物理",
+    "power": 35,
+    "accuracy": 85,
+    "pp": 16,
+    "tags": [],
+    "description": "相手をバインド状態にする。"
+  },
+  {
+    "name": "スピードスワップ",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分と相手の素早さを入れ替える。"
+  },
+  {
+    "name": "スマートホーン",
+    "type": "はがね",
+    "category": "物理",
+    "power": 70,
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手に必ず命中する。"
+  },
+  {
+    "name": "すりかえ",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手と自分が持つ道具を入れ替える。"
+  },
+  {
+    "name": "せいちょう",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の攻撃、特攻を1段階上げる。にほんばれ状態の場合、2段階上げる。"
+  },
+  {
+    "name": "せいなるつるぎ",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り相手の能力変化を無視してダメージを与える。"
+  },
+  {
+    "name": "ぜったいれいど",
+    "type": "こおり",
+    "category": "特殊",
+    "power": "-",
+    "accuracy": 30,
+    "pp": 8,
+    "tags": [],
+    "description": "相手をひんしにする。命中率30%固定。こおりタイプの相手には当たらない。こおりタイプ以外が使うと20%になる。"
+  },
+  {
+    "name": "そうでん",
+    "type": "くさ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "相手が技を使う前にこの技が命中すると、そのターン相手はでんきタイプになる"
+  },
+  {
+    "name": "ソウルビート",
+    "type": "ドラゴン",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "踊り",
+      "音"
+    ],
+    "description": "音踊り自分のHPを最大HPの1/3減らし自分の攻撃 防御 特攻 特防 素早さを1段階上げる。残りHPが足りない場合は失敗する。"
+  },
+  {
+    "name": "そらをとぶ",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触使ったターンで空中状態になり、次のターンで攻撃する。"
+  },
+  {
+    "name": "ソーラービーム",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "使ったターンで溜め状態になり、次のターンで攻撃する。にほんばれ状態の場合は溜め状態にならず、すぐに攻撃できる。他の天気の場合は威力が1/2になる。"
+  },
+  {
+    "name": "ソーラーブレード",
+    "type": "でんき",
+    "category": "物理",
+    "power": 125,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り使ったターンで溜め状態になり、次のターンで攻撃する。にほんばれ状態の場合は溜め状態にならず、すぐに攻撃できる。他の天気の場合は威力が1/2になる。"
+  },
+  {
+    "name": "だいちのちから",
+    "type": "じめん",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "10%の確率で相手の特防を1段階下げる。"
+  },
+  {
+    "name": "だいちのはどう",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "波動"
+    ],
+    "description": "波動自分がフィールドの効果を受けている場合、威力が2倍になる。フィールドの種類によってタイプが変わる。"
+  },
+  {
+    "name": "だいばくはつ",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 250,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "爆発"
+    ],
+    "description": "爆発使うと自分はひんしになる。"
+  },
+  {
+    "name": "ダイビング",
+    "type": "みず",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触使ったターンで水中状態になり、次のターンで攻撃する。"
+  },
+  {
+    "name": "だいふんげき",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "自分はあばれ状態になる。"
+  },
+  {
+    "name": "だいもんじ",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 110,
+    "accuracy": 85,
+    "pp": 8,
+    "tags": [],
+    "description": "10%の確率で相手をやけど状態にする。"
+  },
+  {
+    "name": "たきのぼり",
+    "type": "みず",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触20%の確率で相手をひるませる。"
+  },
+  {
+    "name": "だくりゅう",
+    "type": "みず",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 85,
+    "pp": 12,
+    "tags": [],
+    "description": "30%の確率で相手の命中率を1段階下げる。"
+  },
+  {
+    "name": "たくわえる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の防御・特防を1段階上げる。たくわえる状態を1増やす。最大3回までたくわえられる。"
+  },
+  {
+    "name": "ダストシュート",
+    "type": "どく",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 80,
+    "pp": 8,
+    "tags": [],
+    "description": "30%の確率で相手をどく状態にする。"
+  },
+  {
+    "name": "たたりめ",
+    "type": "ゴースト",
+    "category": "特殊",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手が状態異常だと威力が2倍になる。"
+  },
+  {
+    "name": "たてこもる",
+    "type": "はがね",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分の防御を2段階上げる。"
+  },
+  {
+    "name": "タネばくだん",
+    "type": "でんき",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾通常の攻撃技。"
+  },
+  {
+    "name": "タネマシンガン",
+    "type": "でんき",
+    "category": "物理",
+    "power": 25,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾2ー5回連続で攻撃する。"
+  },
+  {
+    "name": "ダブルアタック",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 35,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触2回連続で攻撃する。"
+  },
+  {
+    "name": "ダブルウイング",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触2回連続で攻撃する。"
+  },
+  {
+    "name": "ダメおし",
+    "type": "あく",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触使ったターン中、相手がすでにダメージを受けているなら威力が2倍になる。"
+  },
+  {
+    "name": "ちいさくなる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分の回避率を2段階上げる。自分はちいさくなる状態になる。"
+  },
+  {
+    "name": "ちからをすいとる",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の攻撃の数値分自分のHPを回復する。相手の攻撃を1段階下げる。"
+  },
+  {
+    "name": "ちきゅうなげ",
+    "type": "かくとう",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手のHPに50ダメージを与える。"
+  },
+  {
+    "name": "チャージビーム",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 50,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "70%の確率で自分の特攻を上げる。"
+  },
+  {
+    "name": "ちょうのまい",
+    "type": "むし",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "踊り"
+    ],
+    "description": "踊り自分の特攻、特防、素早さを1段階上げる。"
+  },
+  {
+    "name": "ちょうはつ",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "メンタル"
+    ],
+    "description": "メンタル相手をちょうはつ状態にする。"
+  },
+  {
+    "name": "ついばむ",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手がきのみを持っていればそのきのみを代わりに食べ、自分がその効果を受ける。"
+  },
+  {
+    "name": "ツインビーム",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "2回連続で攻撃する。"
+  },
+  {
+    "name": "つきのひかり",
+    "type": "フェアリー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分のHPを最大HPの1/2回復する。にほんばれ状態の場合は2/3回復する。それ以外の天気の場合は1/4回復する。"
+  },
+  {
+    "name": "つけあがる",
+    "type": "あく",
+    "category": "物理",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の能力変化が1段階上がるごとにこの技の威力は20上がる。"
+  },
+  {
+    "name": "つじぎり",
+    "type": "あく",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切りきゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "つのドリル",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 30,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手をひんしにする。命中率30%固定。"
+  },
+  {
+    "name": "つばめがえし",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 60,
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り必ず命中する。"
+  },
+  {
+    "name": "つぶらなひとみ",
+    "type": "フェアリー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "優先度+1"
+    ],
+    "description": "優先度+1相手の攻撃を1段階下げる。"
+  },
+  {
+    "name": "つぼをつく",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分か味方の攻撃、防御、特攻、特防、素早さ、命中率、回避率のいずれか1つを2段階上げる。"
+  },
+  {
+    "name": "つららおとし",
+    "type": "こおり",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "30%の確率で相手をひるませる。"
+  },
+  {
+    "name": "つららばり",
+    "type": "こおり",
+    "category": "物理",
+    "power": 25,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "2ー5回連続で攻撃する。"
+  },
+  {
+    "name": "つるぎのまい",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "踊り"
+    ],
+    "description": "踊り自分の攻撃を2段階上げる。"
+  },
+  {
+    "name": "てだすけ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "優先度+5"
+    ],
+    "description": "優先度+5使ったターン中、味方の技の威力を1.5倍する。"
+  },
+  {
+    "name": "てっていこうせん",
+    "type": "はがね",
+    "category": "特殊",
+    "power": 140,
+    "accuracy": 95,
+    "pp": 8,
+    "tags": [],
+    "description": "攻撃した後自分の最大HPの1/2のダメージを受ける。"
+  },
+  {
+    "name": "てっぺき",
+    "type": "はがね",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "自分の防御を2段階上げる。"
+  },
+  {
+    "name": "てんしのキッス",
+    "type": "フェアリー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 75,
+    "pp": 12,
+    "tags": [],
+    "description": "相手をこんらん状態にする。"
+  },
+  {
+    "name": "であいがしら",
+    "type": "むし",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "優先度+2"
+    ],
+    "description": "接触優先度+2登場して最初に出す技でない場合失敗する。"
+  },
+  {
+    "name": "とおせんぼう",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [],
+    "description": "相手をにげられない状態にする。"
+  },
+  {
+    "name": "とおぼえ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "音"
+    ],
+    "description": "音自分と味方の攻撃を1段階ずつ上げる。"
+  },
+  {
+    "name": "デカハンマー",
+    "type": "はがね",
+    "category": "物理",
+    "power": 160,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "この技は2回連続で出すことはできない。"
+  },
+  {
+    "name": "とぐろをまく",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の攻撃、防御、命中率を1段階上げる。"
+  },
+  {
+    "name": "とける",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の防御を2段階上げる。"
+  },
+  {
+    "name": "デコレーション",
+    "type": "フェアリー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "相手の攻撃、特攻を2段階上げる。"
+  },
+  {
+    "name": "とっておき",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 140,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触他に覚えている技を全て使っていない場合失敗する。"
+  },
+  {
+    "name": "とどめばり",
+    "type": "むし",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触この技で相手を倒すと攻撃が3段階上がる。"
+  },
+  {
+    "name": "とびかかる",
+    "type": "むし",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の攻撃を1段階下げる。"
+  },
+  {
+    "name": "とびつく",
+    "type": "むし",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の素早さを1段階下げる。"
+  },
+  {
+    "name": "とびはねる",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 85,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触使ったターンで空中状態になり次のターンで攻撃する。30%の確率で相手をまひ状態にする。"
+  },
+  {
+    "name": "とびひざげり",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 130,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触外れるか失敗すると自分の最大HPの1/2のダメージを受ける。"
+  },
+  {
+    "name": "ともえなげ",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "優先度-6"
+    ],
+    "description": "接触優先度-6相手に控えがいる場合相手をランダムに交代させる。"
+  },
+  {
+    "name": "トライアタック",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "20%の確率で相手をまひ状態、やけど状態、こおり状態のいずれかにする。"
+  },
+  {
+    "name": "トラバサミ",
+    "type": "はがね",
+    "category": "物理",
+    "power": 35,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手をバインド状態にする。"
+  },
+  {
+    "name": "トリック",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手と自分が持っている道具を入れ替える。"
+  },
+  {
+    "name": "トリックフラワー",
+    "type": "でんき",
+    "category": "物理",
+    "power": 70,
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "相手に必ず命中する。必ず急所に当たる。"
+  },
+  {
+    "name": "トリックルーム",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "優先度-7"
+    ],
+    "description": "優先度-75ターンの間、全体の場をトリックルーム状態にする。"
+  },
+  {
+    "name": "トリプルアクセル",
+    "type": "こおり",
+    "category": "物理",
+    "power": 20,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触1回目は威力20、2回目は威力40、3回目は威力60の連続3回攻撃。途中で外れると攻撃は終わる。"
+  },
+  {
+    "name": "トロピカルキック",
+    "type": "でんき",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の攻撃を1段階下げる。"
+  },
+  {
+    "name": "でんこうせっか",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "優先度+1"
+    ],
+    "description": "接触優先度+1必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "でんじは",
+    "type": "くさ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 90,
+    "pp": 20,
+    "tags": [],
+    "description": "相手をまひ状態にする。"
+  },
+  {
+    "name": "でんじふゆう",
+    "type": "くさ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分は でんじふゆう状態になる。"
+  },
+  {
+    "name": "でんじほう",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 50,
+    "pp": 8,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾相手をまひ状態にする。"
+  },
+  {
+    "name": "とんぼがえり",
+    "type": "むし",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触攻撃した後、手持ちの他のポケモンと交代する。"
+  },
+  {
+    "name": "トーチカ",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "優先度+4"
+    ],
+    "description": "優先度+4使ったターン中、相手の技から身を守る。接触技をしてきた相手をどく状態にする。連続で使うと成功率が前に使った時の1/3になる。"
+  },
+  {
+    "name": "ナイトバースト",
+    "type": "あく",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 95,
+    "pp": 12,
+    "tags": [],
+    "description": "40%の確率で相手の命中率を1段階下げる。"
+  },
+  {
+    "name": "ナイトヘッド",
+    "type": "ゴースト",
+    "category": "特殊",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "相手のHPに50ダメージを与える。"
+  },
+  {
+    "name": "なかまづくり",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の特性を自分と同じ特性にする。"
+  },
+  {
+    "name": "どくづき",
+    "type": "どく",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触30%の確率で相手をどく状態にする。"
+  },
+  {
+    "name": "どくどく",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "相手をもうどく状態にする。どくタイプが使うと相手に必ず命中する。"
+  },
+  {
+    "name": "どくどくのキバ",
+    "type": "どく",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "噛み"
+    ],
+    "description": "接触噛み50%の確率で相手をもうどく状態にする。"
+  },
+  {
+    "name": "どくのいと",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の素早さを2段階下げる。相手をどく状態にする。"
+  },
+  {
+    "name": "どくのこな",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 75,
+    "pp": 20,
+    "tags": [
+      "粉"
+    ],
+    "description": "粉相手をどく状態にする。"
+  },
+  {
+    "name": "どくびし",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "相手の場をどくびし状態にする。"
+  },
+  {
+    "name": "ドゲザン",
+    "type": "あく",
+    "category": "物理",
+    "power": 85,
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り相手に必ず命中する。"
+  },
+  {
+    "name": "なげつける",
+    "type": "あく",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "持っている道具によって威力と効果が変わる。使うと道具はなくなる。"
+  },
+  {
+    "name": "なまける",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分のHPを最大HPの1/2回復する。"
+  },
+  {
+    "name": "なみだめ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "相手の攻撃特攻を1段階下げる。相手の回避率まもる等を無視して当たる。"
+  },
+  {
+    "name": "なみのり",
+    "type": "みず",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "水中状態の相手には威力が2倍になる。"
+  },
+  {
+    "name": "なやみのタネ",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の特性をふみんにする。"
+  },
+  {
+    "name": "ドラゴンアロー",
+    "type": "ドラゴン",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "2回連続で攻撃する。相手が2匹いる場合はそれぞれに1回ずつ攻撃する。"
+  },
+  {
+    "name": "ドラゴンエール",
+    "type": "ドラゴン",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [
+      "音"
+    ],
+    "description": "音味方をきゅうしょアップ状態にする。ドラゴンタイプなら+2、それ以外のタイプなら+1。"
+  },
+  {
+    "name": "ドラゴンクロー",
+    "type": "ドラゴン",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り通常の攻撃技。"
+  },
+  {
+    "name": "ドラゴンダイブ",
+    "type": "ドラゴン",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触20%の確率で相手をひるませる。ちいさくなる状態の相手には、威力が2倍になり必ず命中する。"
+  },
+  {
+    "name": "ドラゴンテール",
+    "type": "ドラゴン",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "優先度-6"
+    ],
+    "description": "接触優先度-6相手に控えがいる場合、相手をランダムに交代させる。"
+  },
+  {
+    "name": "なりきり",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分の特性を相手の特性と同じにする。"
+  },
+  {
+    "name": "ドリルくちばし",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触通常の攻撃技。"
+  },
+  {
+    "name": "ドリルライナー",
+    "type": "じめん",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 95,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触きゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "ドレインキッス",
+    "type": "フェアリー",
+    "category": "特殊",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手に与えたダメージの3/4自分のHPを回復する。"
+  },
+  {
+    "name": "ドレインパンチ",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ相手に与えたダメージの1/2自分のHPを回復する。"
+  },
+  {
+    "name": "どろかけ",
+    "type": "じめん",
+    "category": "特殊",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の命中率を1段階下げる。"
+  },
+  {
+    "name": "どろぼう",
+    "type": "あく",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分が道具を持っていない場合相手の道具を奪う。"
+  },
+  {
+    "name": "ドわすれ",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の特防を2段階上げる。"
+  },
+  {
+    "name": "ニトロチャージ",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の素早さを1段階上げる。"
+  },
+  {
+    "name": "にほんばれ",
+    "type": "ほのお",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [],
+    "description": "5ターンの間、にほんばれ状態にする。"
+  },
+  {
+    "name": "ニードルガード",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "優先度+4"
+    ],
+    "description": "優先度+4使ったターン中相手の技から身を守り、接触技をしてきた相手の最大HPの1/8のダメージを与える。連続で使うと成功率が前に使った時の1/3になる。"
+  },
+  {
+    "name": "ねがいごと",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分がいる場所をねがいごと状態にする。"
+  },
+  {
+    "name": "ねこだまし",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "優先度+3"
+    ],
+    "description": "接触優先度+3相手をひるませる。登場して最初に出す技でない場合失敗する。"
+  },
+  {
+    "name": "ねごと",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分がねむり状態の場合使うことができる。自分が覚えている他の技の中からいずれかの技を使う。"
+  },
+  {
+    "name": "のしかかり",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触30%の確率で相手をまひ状態にする。ちいさくなる状態の相手には、威力が2倍になり必ず命中する。"
+  },
+  {
+    "name": "ネズミざん",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 20,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り1-10回連続で攻撃する。途中で外れると攻撃は終わる。"
+  },
+  {
+    "name": "ねっさのだいち",
+    "type": "じめん",
+    "category": "特殊",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "30%の確率で相手をやけど状態にする。相手のこおり状態を治す。使うと自分のこおり状態を治す。"
+  },
+  {
+    "name": "ねっとう",
+    "type": "みず",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "30%の確率で相手をやけど状態にする。相手のこおり状態を治す。使うと自分のこおり状態を治す。"
+  },
+  {
+    "name": "ねっぷう",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 95,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "風"
+    ],
+    "description": "風10%の確率で相手をやけど状態にする。"
+  },
+  {
+    "name": "ねばねばネット",
+    "type": "むし",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "相手の場をねばねばネット状態にする。"
+  },
+  {
+    "name": "のみこむ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復たくわえる状態の数値が多いとHPを多く回復する。1回だと最大HPの1/4回復する。2回だと最大HPの1/2回復する。3回だと全回復する。たくわえる状態ではない場合、この技は失敗する。"
+  },
+  {
+    "name": "ねむりごな",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 75,
+    "pp": 16,
+    "tags": [
+      "粉"
+    ],
+    "description": "粉相手をねむり状態にする。"
+  },
+  {
+    "name": "ねむる",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分のHPを全回復し状態異常も回復する。2ターンの間ねむり状態になる。HPが満タンだと失敗する。"
+  },
+  {
+    "name": "のろい",
+    "type": "ゴースト",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分のHPを最大HPの1/2減らし、相手をのろい状態にする。ゴーストタイプ以外の場合、自分の素早さを1段階下げて、攻撃・防御を1段階上げる。"
+  },
+  {
+    "name": "ねをはる",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分はねをはる状態になる。"
+  },
+  {
+    "name": "ハイドロカノン",
+    "type": "みず",
+    "category": "特殊",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "使用した次のターン、自分は反動状態になる。"
+  },
+  {
+    "name": "ハイドロポンプ",
+    "type": "みず",
+    "category": "特殊",
+    "power": 110,
+    "accuracy": 80,
+    "pp": 8,
+    "tags": [],
+    "description": "通常の攻撃技。"
+  },
+  {
+    "name": "ハイパーボイス",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "音"
+    ],
+    "description": "音通常の攻撃技。"
+  },
+  {
+    "name": "はいよるいちげき",
+    "type": "むし",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の特攻を1段階下げる。"
+  },
+  {
+    "name": "はかいこうせん",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "使った次のターン、自分は反動状態になる。"
+  },
+  {
+    "name": "ばかぢから",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の攻撃と防御が1段階下がる。"
+  },
+  {
+    "name": "はがねのつばさ",
+    "type": "はがね",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 90,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触10%の確率で自分の防御を1段階上げる。"
+  },
+  {
+    "name": "はきだす",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "たくわえる状態の数値が多いほど威力が上がる。威力100ー300。たくわえる状態ではない場合、この技は失敗する。"
+  },
+  {
+    "name": "ばくおんぱ",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 140,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "音"
+    ],
+    "description": "音通常の攻撃技。"
+  },
+  {
+    "name": "ばくれつパンチ",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 50,
+    "pp": 8,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ相手をこんらん状態にする。"
+  },
+  {
+    "name": "ハサミギロチン",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 30,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手をひんしにする。命中率30%固定。"
+  },
+  {
+    "name": "はたきおとす",
+    "type": "あく",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手が道具を持っていると威力が1.5倍になる。相手の道具を失わせる。"
+  },
+  {
+    "name": "はたく",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触通常の攻撃技。"
+  },
+  {
+    "name": "バトンタッチ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "手持ちの他のポケモンと交代する。能力変化、みがわり等をそのポケモンに引き継ぐ。"
+  },
+  {
+    "name": "はどうだん",
+    "type": "かくとう",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "弾",
+      "波動"
+    ],
+    "description": "弾波動相手に必ず命中する。"
+  },
+  {
+    "name": "はなびらのまい",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "踊り"
+    ],
+    "description": "接触踊り自分はあばれ状態になる。"
+  },
+  {
+    "name": "はなふぶき",
+    "type": "でんき",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "風"
+    ],
+    "description": "風通常の攻撃技。"
+  },
+  {
+    "name": "はねやすめ",
+    "type": "ひこう",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "回復"
+    ],
+    "description": "回復自分のHPを最大HPの1/2回復する。ひこうタイプが使うとそのターン中ひこうタイプでなくなる。"
+  },
+  {
+    "name": "ハバネロエキス",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "相手の防御を2段階下げて、攻撃を2段階上げる。"
+  },
+  {
+    "name": "はめつのひかり",
+    "type": "フェアリー",
+    "category": "特殊",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "与えたダメージの1/2を自分も受ける。"
+  },
+  {
+    "name": "はやてがえし",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "優先度+3"
+    ],
+    "description": "接触優先度+3相手が先制技を使っていない場合失敗する。相手をひるませる。"
+  },
+  {
+    "name": "はらだいこ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分のHPを最大HPの1/2減らし、攻撃を6段階目まで上げる。残りHPが足りない場合は失敗する。"
+  },
+  {
+    "name": "パラボラチャージ",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手に与えたダメージの1/2自分のHPを回復する。"
+  },
+  {
+    "name": "バリアーラッシュ",
+    "type": "エスパー",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分の防御を1段階上げる。"
+  },
+  {
+    "name": "バレットパンチ",
+    "type": "はがね",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "パンチ",
+      "優先度+1"
+    ],
+    "description": "接触優先度+1パンチ必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "ハロウィン",
+    "type": "ゴースト",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手をハロウィン状態にする。"
+  },
+  {
+    "name": "パワーウィップ",
+    "type": "でんき",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触通常の攻撃技。"
+  },
+  {
+    "name": "パワーシェア",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分と相手の攻撃の数値と特攻の数値を足してお互いに1/2ずつ分ける。"
+  },
+  {
+    "name": "パワージェム",
+    "type": "いわ",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "通常の攻撃技。"
+  },
+  {
+    "name": "パワースワップ",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分の攻撃・特攻の能力変化を相手の攻撃・特攻の能力変化と入れ替える。"
+  },
+  {
+    "name": "パワートリック",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分は攻防反転状態になる。"
+  },
+  {
+    "name": "バークアウト",
+    "type": "あく",
+    "category": "特殊",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [
+      "音"
+    ],
+    "description": "音相手の特攻を1段階下げる。"
+  },
+  {
+    "name": "ハードプラント",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "使った次のターン、自分は反動状態になる。"
+  },
+  {
+    "name": "ハードプレス",
+    "type": "はがね",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の残りHPが多いほど威力が高くなる。威力1ー100。"
+  },
+  {
+    "name": "ひかりのかべ",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "5ターンの間、味方の場をひかりのかべ状態にする。"
+  },
+  {
+    "name": "ひけん･ちえなみ",
+    "type": "あく",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 90,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り相手の場をまきびし状態にする。"
+  },
+  {
+    "name": "ひゃっきやこう",
+    "type": "ゴースト",
+    "category": "特殊",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "30%の確率で相手をやけど状態にする。相手が状態異常だと威力が2倍になる。"
+  },
+  {
+    "name": "ひやみず",
+    "type": "みず",
+    "category": "特殊",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の攻撃を1段階下げる。"
+  },
+  {
+    "name": "ひょうざんおろし",
+    "type": "こおり",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 12,
+    "tags": [],
+    "description": "30%の確率で相手をひるませる。"
+  },
+  {
+    "name": "ビルドアップ",
+    "type": "かくとう",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の攻撃と防御を1段階ずつ上げる。"
+  },
+  {
+    "name": "ヒートスタンプ",
+    "type": "ほのお",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分が相手より重いほど威力が上がる。威力40ー120。ちいさくなる状態の相手には、威力が2倍になり必ず命中する。"
+  },
+  {
+    "name": "ファストガード",
+    "type": "かくとう",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [
+      "優先度+3"
+    ],
+    "description": "優先度+3使ったターン中自分と味方を先制技から守る。"
+  },
+  {
+    "name": "ふいうち",
+    "type": "あく",
+    "category": "物理",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触",
+      "優先度+1"
+    ],
+    "description": "接触優先度+1相手が攻撃を選んでおりかつこの技を使ったターン中、まだ攻撃をしていない時でないと失敗する。"
+  },
+  {
+    "name": "ふういん",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分はふういん状態になる。"
+  },
+  {
+    "name": "フェアリーロック",
+    "type": "フェアリー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "場の全員をフェアリーロック状態にする。"
+  },
+  {
+    "name": "フェイタルクロー",
+    "type": "どく",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り30%の確率で相手をどく状態・まひ状態・ねむり状態のいずれかにする。"
+  },
+  {
+    "name": "フェイント",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "優先度+2"
+    ],
+    "description": "優先度+2まもる、みきり等の効果を解除して攻撃する。"
+  },
+  {
+    "name": "フェザーダンス",
+    "type": "ひこう",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "踊り"
+    ],
+    "description": "踊り相手の攻撃を2段階下げる。"
+  },
+  {
+    "name": "ふきとばし",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "風",
+      "優先度-6"
+    ],
+    "description": "風優先度-6相手に控えがいる場合、相手をランダムに交代させる。"
+  },
+  {
+    "name": "ぶきみなじゅもん",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "音"
+    ],
+    "description": "音相手の最後に使った技のPPを3減らす。"
+  },
+  {
+    "name": "ふくろだたき",
+    "type": "あく",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "手持ちのポケモンの数だけ相手を攻撃する。ひんしや状態異常のポケモンは数えない。技の威力は手持ちポケモンのこうげきで計算する。"
+  },
+  {
+    "name": "ふしょくガス",
+    "type": "どく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "自分以外の場の全員の持っている道具を失わせる。"
+  },
+  {
+    "name": "ぶちかまし",
+    "type": "じめん",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ自分の防御 特防を1段階ずつ下げる。"
+  },
+  {
+    "name": "ふぶき",
+    "type": "こおり",
+    "category": "特殊",
+    "power": 110,
+    "accuracy": 70,
+    "pp": 8,
+    "tags": [
+      "風"
+    ],
+    "description": "風10%の確率で相手をこおり状態にする。ゆき状態の場合、相手に必ず命中する。"
+  },
+  {
+    "name": "フライングプレス",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 100,
+    "accuracy": 95,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触この技のタイプとひこうタイプの2つの相性を組み合わせてダメージが決まる。ちいさくなる状態の相手には威力が2倍になり必ず命中する。"
+  },
+  {
+    "name": "ブラストバーン",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "使った次のターン、自分は反動状態になる。"
+  },
+  {
+    "name": "フラフラダンス",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "踊り"
+    ],
+    "description": "踊り自分以外の場の全員をこんらん状態にする。"
+  },
+  {
+    "name": "フリーズドライ",
+    "type": "こおり",
+    "category": "特殊",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "みずタイプの相手にも効果バツグンとなる。"
+  },
+  {
+    "name": "フレアソング",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "音"
+    ],
+    "description": "音自分の特攻を1段階上げる。"
+  },
+  {
+    "name": "フレアドライブ",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手に与えたダメージの1/3を自分も受ける。10%の確率で相手をやけど状態にする。使うとこおり状態が治る。"
+  },
+  {
+    "name": "ブレイククロー",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り50%の確率で相手の防御を1段階下げる。"
+  },
+  {
+    "name": "ブレイズキック",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 85,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触10%の確率で相手をやけど状態にする。きゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "ブレイブバード",
+    "type": "ひこう",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触与えたダメージの1/3を自分も受ける。"
+  },
+  {
+    "name": "ふんえん",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "30%の確率で相手をやけど状態にする。"
+  },
+  {
+    "name": "ふんか",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "自分の残りHPが少ないほど威力が下がる。威力1-150。"
+  },
+  {
+    "name": "ぶんまわす",
+    "type": "あく",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触通常の攻撃技。"
+  },
+  {
+    "name": "ヘドロウェーブ",
+    "type": "どく",
+    "category": "特殊",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "10%の確率で相手をどく状態にする。"
+  },
+  {
+    "name": "ヘドロばくだん",
+    "type": "どく",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾30%の確率で相手をどく状態にする。"
+  },
+  {
+    "name": "ベノムショック",
+    "type": "どく",
+    "category": "特殊",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手がどく状態、もうどく状態の場合威力が2倍になる。"
+  },
+  {
+    "name": "へびにらみ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手をまひ状態にする。"
+  },
+  {
+    "name": "ヘビーボンバー",
+    "type": "はがね",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分が相手より重いほど威力が上がる。威力40ー120。ちいさくなる状態の相手には、威力が2倍になり必ず命中する。"
+  },
+  {
+    "name": "へんしん",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "相手と同じポケモンに変身する。HP以外のステータスも同じになる。"
+  },
+  {
+    "name": "ほうでん",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "30%の確率で相手をまひ状態にする。"
+  },
+  {
+    "name": "ぼうふう",
+    "type": "ひこう",
+    "category": "特殊",
+    "power": 110,
+    "accuracy": 70,
+    "pp": 12,
+    "tags": [
+      "風"
+    ],
+    "description": "風30%の確率で相手をこんらん状態にする。あめ状態の場合、相手に必ず命中する。空中状態の相手にも当たる。"
+  },
+  {
+    "name": "ほうふく",
+    "type": "あく",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触使ったターンに相手から受けた技のダメージを1.5倍にして返す。"
+  },
+  {
+    "name": "ほえる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "音",
+      "優先度-6"
+    ],
+    "description": "優先度-6音相手に控えがいる場合、相手をランダムに交代させる。"
+  },
+  {
+    "name": "ほおばる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "持っているきのみを食べる。自分の防御を2段階上げる。きのみを持っていないと、この技は使えない。"
+  },
+  {
+    "name": "ほしがる",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分が道具を持っていない場合相手の道具を奪う。"
+  },
+  {
+    "name": "ほっぺすりすり",
+    "type": "くさ",
+    "category": "物理",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手をまひ状態にする。"
+  },
+  {
+    "name": "ボディプレス",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触この技は攻撃ではなく、防御の数値でダメージが決まる。"
+  },
+  {
+    "name": "ほのおのうず",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 35,
+    "accuracy": 85,
+    "pp": 16,
+    "tags": [],
+    "description": "相手をバインド状態にする。"
+  },
+  {
+    "name": "ほのおのキバ",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "噛み"
+    ],
+    "description": "接触噛み10%の確率で相手をやけど状態にする。10%の確率で相手をひるませる。"
+  },
+  {
+    "name": "ほのおのパンチ",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ10%の確率で相手をやけど状態にする。"
+  },
+  {
+    "name": "ほのおのまい",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "踊り"
+    ],
+    "description": "踊り50%の確率で自分の特攻が1段階上がる。"
+  },
+  {
+    "name": "ほのおのムチ",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の防御を1段階下げる。"
+  },
+  {
+    "name": "ポルターガイスト",
+    "type": "ゴースト",
+    "category": "物理",
+    "power": 110,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "相手が道具を持っていない場合失敗する。"
+  },
+  {
+    "name": "ボルテッカー",
+    "type": "くさ",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触与えたダメージの1/3を自分も受ける。10%の確率で相手をまひ状態にする。"
+  },
+  {
+    "name": "ボルトチェンジ",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "攻撃した後、手持ちの他のポケモンと交代する。"
+  },
+  {
+    "name": "ほろびのうた",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "音"
+    ],
+    "description": "音場の全員をほろび状態にする。"
+  },
+  {
+    "name": "ボーンラッシュ",
+    "type": "じめん",
+    "category": "物理",
+    "power": 30,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "2-5回連続で攻撃する。"
+  },
+  {
+    "name": "まきつく",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 15,
+    "accuracy": 90,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手をバインド状態にする。"
+  },
+  {
+    "name": "まきびし",
+    "type": "じめん",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "相手の場をまきびし状態にする。"
+  },
+  {
+    "name": "マジカルシャイン",
+    "type": "フェアリー",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "通常の攻撃技。"
+  },
+  {
+    "name": "マジカルフレイム",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の特攻を1段階下げる。"
+  },
+  {
+    "name": "マジックルーム",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "5ターンの間、全体の場をマジックルーム状態にする。"
+  },
+  {
+    "name": "マッドショット",
+    "type": "じめん",
+    "category": "特殊",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 16,
+    "tags": [],
+    "description": "相手の素早さを1段階下げる。"
+  },
+  {
+    "name": "マッハパンチ",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触",
+      "パンチ",
+      "優先度+1"
+    ],
+    "description": "接触優先度+1パンチ必ず先制できる。(優先度+1)"
+  },
+  {
+    "name": "まとわりつく",
+    "type": "むし",
+    "category": "特殊",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手をバインド状態にする。"
+  },
+  {
+    "name": "まねっこ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "最後に使われた技を使う。使われた技がない場合失敗する。"
+  },
+  {
+    "name": "まほうのこな",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "粉"
+    ],
+    "description": "粉相手のタイプをエスパータイプに変える。"
+  },
+  {
+    "name": "まもる",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "優先度+4"
+    ],
+    "description": "優先度+4使ったターン中、相手の技から見を守る。連続で使うと成功率が前に使った時の1/3になる。"
+  },
+  {
+    "name": "みがわり",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分のHPを最大HPの1/4減らしみがわりを出す。みがわりは、自分の代わりに技を受ける。最大HPの1/4のダメージを受けると消える。"
+  },
+  {
+    "name": "みきり",
+    "type": "かくとう",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [
+      "優先度+4"
+    ],
+    "description": "優先度+4使ったターン中相手の技から身を守る。連続で使うと成功率が前に使った時の1/3になる。"
+  },
+  {
+    "name": "ミサイルばり",
+    "type": "むし",
+    "category": "物理",
+    "power": 25,
+    "accuracy": 95,
+    "pp": 20,
+    "tags": [],
+    "description": "2ー5回連続で攻撃する。"
+  },
+  {
+    "name": "みずあめボム",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 60,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾3ターンの間、相手をあめまみれ状態にする。"
+  },
+  {
+    "name": "みずしゅりけん",
+    "type": "みず",
+    "category": "特殊",
+    "power": 15,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "優先度+1"
+    ],
+    "description": "優先度+12～5回連続で攻撃する。"
+  },
+  {
+    "name": "ミストバースト",
+    "type": "フェアリー",
+    "category": "特殊",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [
+      "爆発"
+    ],
+    "description": "爆発使うと自分はひんしになる。ミストフィールド状態の効果を受けている場合威力が1.5倍になる。"
+  },
+  {
+    "name": "ミストフィールド",
+    "type": "フェアリー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "5ターンの間、全体の場をミストフィールド状態にする。"
+  },
+  {
+    "name": "みずのはどう",
+    "type": "みず",
+    "category": "特殊",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "波動"
+    ],
+    "description": "波動20%の確率で相手をこんらん状態にする。"
+  },
+  {
+    "name": "みずびたし",
+    "type": "みず",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手のタイプをみずタイプに変える。"
+  },
+  {
+    "name": "みちづれ",
+    "type": "ゴースト",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [],
+    "description": "自分はみちづれ状態になる。連続で使うと失敗する。"
+  },
+  {
+    "name": "みらいよち",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手がいる場所をみらいにこうげき状態にする。"
+  },
+  {
+    "name": "ミラーコート",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "優先度-5"
+    ],
+    "description": "優先度-5使ったターンに相手から受けた特殊技のダメージを2倍にして返す。"
+  },
+  {
+    "name": "ミラータイプ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 16,
+    "tags": [],
+    "description": "自分のタイプを相手のタイプと同じにする。"
+  },
+  {
+    "name": "みわくのボイス",
+    "type": "フェアリー",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "音"
+    ],
+    "description": "音使ったターン中に相手の能力が上がっている場合、相手をこんらん状態にする。"
+  },
+  {
+    "name": "むしくい",
+    "type": "むし",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手がきのみを持っていればそきのみを代わりに食べ、自分がその効果を受ける。"
+  },
+  {
+    "name": "むしのさざめき",
+    "type": "むし",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "音"
+    ],
+    "description": "音10%の確率で相手の特防を1段階下げる。"
+  },
+  {
+    "name": "むしのていこう",
+    "type": "むし",
+    "category": "特殊",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手の特攻を1段階下げる。"
+  },
+  {
+    "name": "むねんのつるぎ",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切り相手に与えたダメージの1/2自分のHPを回復する。"
+  },
+  {
+    "name": "ムーンフォース",
+    "type": "フェアリー",
+    "category": "特殊",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [],
+    "description": "10%の確率で相手の特攻を1段階下げる。"
+  },
+  {
+    "name": "めいそう",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の特攻と特防が1段階ずつ上がる。"
+  },
+  {
+    "name": "メガトンキック",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 75,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触通常の攻撃技。"
+  },
+  {
+    "name": "メガホーン",
+    "type": "むし",
+    "category": "物理",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触通常の攻撃技。"
+  },
+  {
+    "name": "メタルバースト",
+    "type": "はがね",
+    "category": "物理",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "使ったターンに相手から受けた技のダメージを1.5倍にして返す。"
+  },
+  {
+    "name": "メテオビーム",
+    "type": "いわ",
+    "category": "特殊",
+    "power": 120,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "使ったターンで溜め状態になり次のターンで攻撃する。使ったターンに自分の特攻を1段階上げる。"
+  },
+  {
+    "name": "メロメロ",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "メンタル"
+    ],
+    "description": "メンタル相手をメロメロ状態にする。同性、性別不明の相手には失敗する。"
+  },
+  {
+    "name": "もえつきる",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 130,
+    "accuracy": 100,
+    "pp": 8,
+    "tags": [],
+    "description": "自分のほのおタイプがなくなる。使うと自分のこおり状態を治す。自分がほのおタイプではない場合失敗する。"
+  },
+  {
+    "name": "もりののろい",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手をもりののろい状態にする。"
+  },
+  {
+    "name": "もろはのずつき",
+    "type": "いわ",
+    "category": "物理",
+    "power": 150,
+    "accuracy": 80,
+    "pp": 8,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触与えたダメージの1/2を自分も受ける。"
+  },
+  {
+    "name": "やけっぱち",
+    "type": "ほのお",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触前のターン自分が動けなかったり技を外したり失敗していた場合、威力が2倍になる。"
+  },
+  {
+    "name": "やどりぎのタネ",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [],
+    "description": "相手をやどりぎのタネ状態にする。"
+  },
+  {
+    "name": "やまあらし",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触必ず急所に当たる。"
+  },
+  {
+    "name": "ゆきげしき",
+    "type": "こおり",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [],
+    "description": "5ターンの間、ゆき状態にする。"
+  },
+  {
+    "name": "ゆきなだれ",
+    "type": "こおり",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触",
+      "優先度-4"
+    ],
+    "description": "接触優先度-4この技を使うターンに相手からの技ダメージを受けていれば、威力が2倍になる。"
+  },
+  {
+    "name": "ライジングボルト",
+    "type": "くさ",
+    "category": "特殊",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [],
+    "description": "相手がエレキフィールド状態の効果を受けている場合、威力が2倍になる。"
+  },
+  {
+    "name": "ラスターカノン",
+    "type": "はがね",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "10%の確率で相手の特防を1段階下げる。"
+  },
+  {
+    "name": "リサイクル",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "自分が最後に消費した道具を元に戻し、再び持つ。"
+  },
+  {
+    "name": "リフレクター",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "5ターンの間、味方の場をリフレクター状態にする。"
+  },
+  {
+    "name": "りゅうせいぐん",
+    "type": "ドラゴン",
+    "category": "特殊",
+    "power": 130,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "自分の特攻を2段階下げる。"
+  },
+  {
+    "name": "りゅうのはどう",
+    "type": "ドラゴン",
+    "category": "特殊",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "波動"
+    ],
+    "description": "波動通常の攻撃技。"
+  },
+  {
+    "name": "りゅうのまい",
+    "type": "ドラゴン",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [
+      "踊り"
+    ],
+    "description": "踊り自分の攻撃、素早さを1段階上げる。"
+  },
+  {
+    "name": "りんごさん",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の特防を1段階下げる。"
+  },
+  {
+    "name": "りんしょう",
+    "type": "ノーマル",
+    "category": "特殊",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "音"
+    ],
+    "description": "音同じターンに複数のポケモンがこの技を使うと、1匹目が使ったすぐ後に2匹目以降が使う。2匹目以降の威力は2倍になる。"
+  },
+  {
+    "name": "リーフストーム",
+    "type": "でんき",
+    "category": "特殊",
+    "power": 130,
+    "accuracy": 90,
+    "pp": 8,
+    "tags": [],
+    "description": "自分の特攻を2段階下げる。"
+  },
+  {
+    "name": "リーフブレード",
+    "type": "でんき",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "切り"
+    ],
+    "description": "接触切りきゅうしょアップ+1で攻撃する。"
+  },
+  {
+    "name": "ルミナコリジョン",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "相手の特防を2段階下げる。"
+  },
+  {
+    "name": "レイジングブル",
+    "type": "ノーマル",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触自分のフォルムによって技のタイプが変わる。相手の場のひかりのかべ状態、リフレクター状態、オーロラベール状態を解除して攻撃する。"
+  },
+  {
+    "name": "れいとうパンチ",
+    "type": "こおり",
+    "category": "物理",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触",
+      "パンチ"
+    ],
+    "description": "接触パンチ10%の確率で相手をこおり状態にする。"
+  },
+  {
+    "name": "れいとうビーム",
+    "type": "こおり",
+    "category": "特殊",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "10%の確率で相手をこおり状態にする。"
+  },
+  {
+    "name": "れんごく",
+    "type": "ほのお",
+    "category": "特殊",
+    "power": 100,
+    "accuracy": 50,
+    "pp": 8,
+    "tags": [],
+    "description": "相手をやけど状態にする。"
+  },
+  {
+    "name": "ロックオン",
+    "type": "ノーマル",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 8,
+    "tags": [],
+    "description": "自分はロックオン状態になる。"
+  },
+  {
+    "name": "ロックカット",
+    "type": "いわ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の素早さを2段階上げる。"
+  },
+  {
+    "name": "ロックブラスト",
+    "type": "いわ",
+    "category": "物理",
+    "power": 25,
+    "accuracy": 90,
+    "pp": 12,
+    "tags": [
+      "弾"
+    ],
+    "description": "弾2ー5回連続で攻撃する。"
+  },
+  {
+    "name": "ローキック",
+    "type": "かくとう",
+    "category": "物理",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の素早さを1段階下げる。"
+  },
+  {
+    "name": "ワイドガード",
+    "type": "いわ",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [
+      "優先度+3"
+    ],
+    "description": "優先度+3使ったターン中、味方全員に当たる技から身を守る。"
+  },
+  {
+    "name": "ワイドフォース",
+    "type": "エスパー",
+    "category": "特殊",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 12,
+    "tags": [],
+    "description": "サイコフィールド状態の効果を受けている場合、威力が1.5倍になり相手全体を攻撃する。"
+  },
+  {
+    "name": "ワイドブレイカー",
+    "type": "ドラゴン",
+    "category": "物理",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触相手の攻撃を1段階下げる。"
+  },
+  {
+    "name": "ワイルドボルト",
+    "type": "くさ",
+    "category": "物理",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "tags": [
+      "接触"
+    ],
+    "description": "接触与えたダメージの1/4を自分も受ける。"
+  },
+  {
+    "name": "わたほうし",
+    "type": "でんき",
+    "category": "変化",
+    "power": "-",
+    "accuracy": 100,
+    "pp": 20,
+    "tags": [
+      "粉"
+    ],
+    "description": "粉相手の素早さを2段階下げる。"
+  },
+  {
+    "name": "わるだくみ",
+    "type": "あく",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 20,
+    "tags": [],
+    "description": "自分の特攻を2段階上げる。"
+  },
+  {
+    "name": "ワンダールーム",
+    "type": "エスパー",
+    "category": "変化",
+    "power": "-",
+    "accuracy": "-",
+    "pp": 12,
+    "tags": [],
+    "description": "5ターンの間、全体の場をワンダールーム状態にする。"
+  }
+];
+

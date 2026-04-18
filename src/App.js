@@ -1,29 +1,59 @@
 import React, { useState } from 'react';
-import { POKEMON_DB, hiraToKata } from './pokemonData';
+import { POKEMON_DB, MOVE_DB, hiraToKata } from './pokemonData';
 
+// Appコンポーネント
 function App() {
   const [view, setView] = useState('selection'); // 初期表示は選出画面
+  const initialPoke = { name: "未入力", s: 0, ts: 0, type: "", moves: ["", "", "", ""] };
 
   // 自分側のパーティ（登録画面で編集）
-  const [myParty, setMyParty] = useState(Array(6).fill({ name: "未入力", s: 0, ts: 0, type: "" }));
-  
+  const [myParty, setMyParty] = useState(Array(6).fill(initialPoke));
   // 相手側のパーティ（選出画面で編集）
-  const [enemyParty, setEnemyParty] = useState(Array(6).fill({ name: "未入力", s: 0, ts: 0, type: "" }));
+  const [enemyParty, setEnemyParty] = useState(Array(6).fill(initialPoke));
   
   // どちらを編集しているか管理 { type: 'my' | 'enemy', index: 0~5 }
   const [editConfig, setEditConfig] = useState(null);
 
+  // 技を更新するための関数を追加
+  const handleUpdateMove = (pokeIndex, moveIndex, moveName) => {
+    const newParty = [...myParty];
+    // 技配列だけを新しくして更新
+    const newMoves = [...newParty[pokeIndex].moves];
+    newMoves[moveIndex] = moveName;
+    newParty[pokeIndex] = { ...newParty[pokeIndex], moves: newMoves };
+    setMyParty(newParty);
+  };
+  
+  // 技を選択した時の処理
+  const handleSelectMove = (move) => {
+    if (!editConfig || editConfig.moveIndex === null) return;
+  
+    const { pokeIndex, moveIndex } = editConfig;
+    const newParty = [...myParty];
+    const newMoves = [...newParty[pokeIndex].moves];
+    newMoves[moveIndex] = move.name; // 技名をセット
+    newParty[pokeIndex] = { ...newParty[pokeIndex], moves: newMoves };
+    setMyParty(newParty);
+    setEditConfig(null); // モーダルを閉じる
+  };
+
   // ポケモンが選択された時の処理
   const handleSelectPokemon = (poke) => {
     if (!editConfig) return;
+    
+    // 選択したポケモンのデータをベースに、必ず moves を付与する
+    const newPokeData = {
+      ...poke,
+      moves: poke.moves || ["", "", "", ""] // 技枠がなければ初期化
+    };
 
     if (editConfig.type === 'my') {
       const newParty = [...myParty];
-      newParty[editConfig.index] = poke;
+      newParty[editConfig.index] = newPokeData;
       setMyParty(newParty);
     } else {
       const newParty = [...enemyParty];
-      newParty[editConfig.index] = poke;
+      newParty[editConfig.index] = newPokeData;
       setEnemyParty(newParty);
     }
     setEditConfig(null);
@@ -43,6 +73,7 @@ function App() {
           <RegisterView 
             myParty={myParty} 
             onMyPokeClick={(index) => setEditConfig({ type: 'my', index })} 
+            onMoveClick={(pokeIndex, moveIndex) => setEditConfig({ type: 'my', pokeIndex, moveIndex })}
           />
         )}
         
@@ -62,8 +93,10 @@ function App() {
       {/* 検索モーダル */}
       {editConfig !== null && (
         <SearchModal 
+          // editConfig に moveIndex があれば 'move'、なければ 'pokemon'
+          mode={editConfig.moveIndex !== undefined ? 'move' : 'pokemon'}
           onClose={() => setEditConfig(null)} 
-          onSelect={handleSelectPokemon} 
+          onSelect={editConfig.moveIndex !== undefined ? handleSelectMove : handleSelectPokemon} 
         />
       )}
     </div>
@@ -71,28 +104,55 @@ function App() {
 }
 
 // --- 登録画面コンポーネント ---
-function RegisterView({ myParty, onMyPokeClick }) {
-  return (
+function RegisterView({ myParty, onMyPokeClick, onMoveClick }) {
+return (
     <div style={{ padding: '10px' }}>
       <h3 style={{ fontSize: '1rem', borderLeft: '4px solid #3182ce', paddingLeft: '10px', marginBottom: '15px' }}>🛡️ マイパーティ登録</h3>
       {myParty.map((p, i) => (
-        <div key={i} style={registerCardStyle} onClick={() => onMyPokeClick(i)}>
-          <div style={{ fontWeight: 'bold', fontSize: '0.9rem', color: p.name === "未入力" ? "#a0aec0" : "#2d3748" }}>
-            {i + 1}. {p.name}
-          </div>
-          {p.name !== "未入力" && (
-            <div style={{ fontSize: '0.75rem', color: '#718096', marginTop: '4px' }}>
-              S:{p.s} / ts:{p.ts} / {p.type}
+        <div key={i} style={registerCardStyle}>
+          {/* ポケモン選択部分 */}
+          <div onClick={() => onMyPokeClick(i)} style={{ borderBottom: '1px solid #edf2f7', paddingBottom: '8px', marginBottom: '8px' }}>
+            <div style={{ fontWeight: 'bold', fontSize: '0.9rem', color: p.name === "未入力" ? "#a0aec0" : "#2d3748" }}>
+              {i + 1}. {p.name}
             </div>
-          )}
+            {p.name !== "未入力" && (
+              <div style={{ fontSize: '0.75rem', color: '#718096' }}>
+                S:{p.s} / {p.type}
+              </div>
+            )}
+          </div>
+
+          {/* 技入力部分（4つ） */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px' }}>
+            {(p.moves || []).map((move, moveIdx) => (
+              <div 
+                key={moveIdx} 
+                onClick={() => onMoveClick(i, moveIdx)}
+                style={{
+                  ...moveButtonStyle,
+                  // 未入力の時は薄い色にする
+                  backgroundColor: p.name === "未入力" ? "#edf2f7" : "#f7fafc"
+                }}
+              >
+                {move || <span style={{ color: '#cbd5e0' }}>技{moveIdx + 1}</span>}
+              </div>
+            ))}
+          </div>
         </div>
       ))}
-      <p style={{ fontSize: '0.7rem', color: '#a0aec0', marginTop: '15px', textAlign: 'center' }}>
-        ※枠をタップして自分のポケモンを登録してください
-      </p>
     </div>
   );
 }
+
+// 追加するスタイル
+const moveInputStyle = {
+  padding: '6px',
+  fontSize: '0.75rem',
+  border: '1px solid #e2e8f0',
+  borderRadius: '4px',
+  outline: 'none',
+  backgroundColor: '#f8fafc'
+};
 
 // --- 選出マトリックスコンポーネント ---
 function SelectionMatrix({ myParty, enemyParty, onEnemyClick }) {
@@ -146,7 +206,8 @@ function CalcView() {
   return <div style={{ padding: '20px', textAlign: 'center', color: '#718096' }}>📊 ダメージ計算（開発中）</div>;
 }
 
-function SearchModal({ onClose, onSelect }) {
+// --- 検索モーダルコンポーネント ---
+function SearchModal({ onClose, onSelect, mode }) {
   // 勝手にスクロールされないように
   React.useEffect(() => {
     document.body.style.overflow = 'hidden'; // 開いた時にスクロール禁止
@@ -158,15 +219,15 @@ function SearchModal({ onClose, onSelect }) {
   const [query, setQuery] = useState('');
   const kataQuery = hiraToKata(query);
   
+  const data = mode === 'move' ? MOVE_DB : POKEMON_DB;
   // 常に8件分くらいのスペースを確保するためのリスト作成
-  const results = POKEMON_DB.filter(p => p.name.includes(kataQuery)).slice(0, 8);
-
+  const results = data.filter(item => item.name.includes(kataQuery));
   return (
     <div style={modalOverlayStyle}>
       <div style={modalContentStyle}>
         <input 
           autoFocus 
-          placeholder="名前で検索..." 
+          placeholder={`${mode === 'move' ? '技' : 'ポケモン'}名で検索...`} 
           onChange={(e) => setQuery(e.target.value)} 
           style={inputStyle} 
         />
@@ -174,12 +235,22 @@ function SearchModal({ onClose, onSelect }) {
         {/* 結果エリア：ここを固定サイズにする */}
         <div style={resultContainerStyle}>
           {results.length > 0 ? (
-            results.map(p => (
-              <div key={p.name} onClick={() => onSelect(p)} style={resultItemStyle}>
-                <div style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>{p.name}</div>
-                <div style={{ fontSize: '0.7rem', color: '#888' }}>
-                  S:{p.s} (ts:{p.ts}) / {p.type}
-                </div>
+            results.map(item => (
+              <div key={item.name} onClick={() => onSelect(item)} style={resultItemStyle}>
+                <div style={{ fontWeight: 'bold', fontSize: '0.9rem' }}>{item.name}</div>
+                {/* 技の場合の追加情報 (v-if) */}
+                    {mode === 'move' && (
+                      <div style={{ fontSize: '0.7rem', color: '#888' }}>
+                        {item.type} / {item.category} / 威:{item.power}
+                      </div>
+                    )}
+            
+                {/* ポケモンの場合の追加情報 (v-else相当) */}
+                {mode !== 'move' && (
+                  <div style={{ fontSize: '0.7rem', color: '#888' }}>
+                    S:{item.s} / {item.type}
+                  </div>
+                )}
               </div>
             ))
           ) : (
@@ -278,6 +349,21 @@ const headerTextStyle = {
 
 const infoTextStyle = { fontSize: '0.55rem', fontWeight: 'normal', lineHeight: '1.1' };
 const cellStyle = { width: cellWidth, height: '55px', border: '1px solid #e2e8f0', textAlign: 'center', fontSize: '1.2rem', backgroundColor: '#fff' };
+
+const moveButtonStyle = {
+  backgroundColor: '#f7fafc',
+  border: '1px solid #e2e8f0',
+  borderRadius: '4px',
+  padding: '8px',
+  textAlign: 'center',
+  fontSize: '0.75rem',
+  cursor: 'pointer',
+  minHeight: '30px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: '#4a5568'
+};
 
 const registerCardStyle = { backgroundColor: '#fff', padding: '12px', borderRadius: '8px', marginBottom: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', cursor: 'pointer' };
 const inputStyle = { 
