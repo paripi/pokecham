@@ -210,21 +210,19 @@ function CalcView() {
 function SearchModal({ onClose, onSelect, mode }) {
   // 勝手にスクロールされないように
   React.useEffect(() => {
-    // 1. スクロール禁止（既存の処理）
-    document.body.style.overflow = 'hidden';
-
-    // 2. キーボード出現時の高さズレ対策（重要）
-    const handler = () => {
-      if (window.visualViewport) {
-        // モーダルをキーボードの上部に張り付かせるなどの調整が可能
-        // ここで modalContentStyle の top を visualViewport.offsetTop に合わせる等
-      }
-    };
-    window.visualViewport?.addEventListener('resize', handler);
+    // スクロール位置を記憶
+    const scrollY = window.scrollY;
+    
+    // bodyを固定（ここが重要！）
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
 
     return () => {
-      document.body.style.overflow = 'unset';
-      window.visualViewport?.removeEventListener('resize', handler);
+      // 戻す
+      document.body.style.position = '';
+      document.body.style.top = '';
+      window.scrollTo(0, scrollY);
     };
   }, []);
   
@@ -288,14 +286,14 @@ const modalOverlayStyle = {
   position: 'fixed', 
   top: 0, 
   left: 0, 
-  width: '100vw',
-  height: '100vh', // 100dvhより100vhの方がiOSキーボード対応では安定することがある
+  width: '100%',
+  height: '100%', 
   backgroundColor: 'rgba(0,0,0,0.6)', 
   display: 'flex', 
   justifyContent: 'center', 
-  alignItems: 'center', // 垂直中央配置に変更
+  alignItems: 'center',
   zIndex: 9999,
-  padding: '10px' // 周囲の余裕
+  padding: '10px'
 };
 
 const modalContentStyle = { 
@@ -304,10 +302,10 @@ const modalContentStyle = {
   borderRadius: '15px', 
   width: '90%', 
   maxWidth: '400px',
-  maxHeight: '80vh', // 画面高さの80%までに制限（キーボード分の余裕）
+  // ここを修正：キーボードが出たときの高さを適応させる
+  maxHeight: '60vh', 
   display: 'flex', 
   flexDirection: 'column',
-  // position: 'fixed' を削除（親のflexで中央配置されるため不要）
   boxSizing: 'border-box'
 };
 
