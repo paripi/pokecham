@@ -210,9 +210,21 @@ function CalcView() {
 function SearchModal({ onClose, onSelect, mode }) {
   // 勝手にスクロールされないように
   React.useEffect(() => {
-    document.body.style.overflow = 'hidden'; // 開いた時にスクロール禁止
+    // 1. スクロール禁止（既存の処理）
+    document.body.style.overflow = 'hidden';
+
+    // 2. キーボード出現時の高さズレ対策（重要）
+    const handler = () => {
+      if (window.visualViewport) {
+        // モーダルをキーボードの上部に張り付かせるなどの調整が可能
+        // ここで modalContentStyle の top を visualViewport.offsetTop に合わせる等
+      }
+    };
+    window.visualViewport?.addEventListener('resize', handler);
+
     return () => {
-      document.body.style.overflow = 'unset'; // 閉じた時に戻す
+      document.body.style.overflow = 'unset';
+      window.visualViewport?.removeEventListener('resize', handler);
     };
   }, []);
   
@@ -290,11 +302,17 @@ const modalContentStyle = {
   backgroundColor: '#fff', 
   padding: '20px', 
   borderRadius: '15px', 
-  width: '85%', 
-  maxWidth: '350px',
-  boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-  // キーボードに押し上げられないよう、位置を固定的にする
-  position: 'relative' 
+  width: '90%', 
+  maxWidth: '400px',
+  maxHeight: '90vh',      // 画面の90%を超えない
+  height: 'auto',         // 内容量に応じて高さが変わる
+  minHeight: '200px',     // 最低でもこれくらいは確保
+  display: 'flex', 
+  flexDirection: 'column',
+  position: 'fixed',      // 画面に対して固定
+  top: '5%',              // 上からの位置を固定
+  left: '50%',            // 画面の真ん中に持ってくる
+  transform: 'translateX(-50%)' // 真ん中に配置するテクニック
 };
 
 const resultContainerStyle = { 
