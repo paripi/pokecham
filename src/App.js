@@ -208,18 +208,28 @@ function CalcView() {
 
 // --- 検索モーダルコンポーネント ---
 function SearchModal({ onClose, onSelect, mode }) {
-  // 勝手にスクロールされないように
+  const [modalHeight, setModalHeight] = useState('80vh');
+
   React.useEffect(() => {
-    // スクロール位置を記憶
+    // スクロール固定
     const scrollY = window.scrollY;
-    
-    // bodyを固定（ここが重要！）
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
 
+    // ビューポート変化を追跡（キーボード対応）
+    const onResize = () => {
+      if (window.visualViewport) {
+        // キーボード分を引いた高さにモーダルを合わせる
+        setModalHeight(`${window.visualViewport.height * 0.9}px`);
+      }
+    };
+
+    window.visualViewport?.addEventListener('resize', onResize);
+    onResize(); // 初期化
+
     return () => {
-      // 戻す
+      window.visualViewport?.removeEventListener('resize', onResize);
       document.body.style.position = '';
       document.body.style.top = '';
       window.scrollTo(0, scrollY);
@@ -240,7 +250,7 @@ function SearchModal({ onClose, onSelect, mode }) {
   const results = data.filter(item => normalize(item.name).includes(normalize(query)));
   return (
     <div style={modalOverlayStyle}>
-      <div style={modalContentStyle}>
+      <div style={{ ...modalContentStyle, height: modalHeight }}>
         <input 
           autoFocus 
           placeholder={`${mode === 'move' ? '技' : 'ポケモン'}名で検索...`} 
@@ -302,11 +312,14 @@ const modalContentStyle = {
   borderRadius: '15px', 
   width: '90%', 
   maxWidth: '400px',
-  // ここを修正：キーボードが出たときの高さを適応させる
-  maxHeight: '60vh', 
+  // ここで固定値ではなく変数(modalHeight)を使う
   display: 'flex', 
   flexDirection: 'column',
-  boxSizing: 'border-box'
+  boxSizing: 'border-box',
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)' // 画面中央に絶対固定
 };
 
 const resultContainerStyle = { 
