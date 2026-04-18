@@ -263,7 +263,17 @@ const cellStyle = { width: cellWidth, height: '55px', border: '1px solid #e2e8f0
 
 const registerCardStyle = { backgroundColor: '#fff', padding: '12px', borderRadius: '8px', marginBottom: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)', cursor: 'pointer' };
 const modalOverlayStyle = { position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 };
-const inputStyle = { width: '100%', padding: '12px', borderRadius: '10px', border: '2px solid #3182ce', boxSizing: 'border-box' };
+const inputStyle = { 
+  width: '100%', 
+  padding: '12px', 
+  borderRadius: '10px', 
+  border: '2px solid #3182ce', 
+  boxSizing: 'border-box',
+  fontSize: '16px', // ここを16px以上に設定
+  outline: 'none',
+  // スマホで入力しやすいように少し高さを出す
+  height: '48px' 
+};
 const closeBtnStyle = { width: '100%', marginTop: '15px', padding: '10px', border: 'none', borderRadius: '8px', backgroundColor: '#718096', color: '#fff' };
 
 export default App;
