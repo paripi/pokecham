@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { POKEMON_DB, MOVE_DB, hiraToKata, getEffectiveness } from './pokemonData';
+import { POKEMON_DB, MOVE_DB, hiraToKata, getEffectiveness, calculateStat } from './pokemonData';
 
 // --- アプリ本体 ---
 function App() {
@@ -34,6 +34,53 @@ function App() {
     }
     setEditConfig(null);
   };
+  
+  // 能力ポイント振り
+  const handleEvChange = (pokeIndex, stat, newValue) => {
+    const newParty = [...myParty];
+    const currentEvs = newParty[pokeIndex].evs || { h:0, a:0, b:0, c:0, d:0, s:0 };
+    
+    // 合計が66を超えないようにするロジック
+    const othersTotal = Object.entries(currentEvs)
+      .filter(([key]) => key !== stat)
+      .reduce((sum, [_, val]) => sum + val, 0);
+    const clampedValue = Math.min(newValue, 66 - othersTotal);
+    
+    newParty[pokeIndex] = {
+      ...newParty[pokeIndex],
+      evs: { ...currentEvs, [stat]: clampedValue }
+    };
+    setMyParty(newParty);
+  };
+  
+  // 性格補正
+  const handleNatureChange = (pokeIndex, stat, type) => {
+    const newParty = [...myParty];
+    const currentPoke = newParty[pokeIndex];
+    const currentNature = currentPoke.nature || { h: 1.0, a: 1.0, b: 1.0, c: 1.0, d: 1.0, s: 1.0 };
+    const newNature = { ...currentNature };
+  
+    const targetValue = type === 'up' ? 1.1 : type === 'down' ? 0.9 : 1.0;
+  
+    // --- ここにトグル（解除）のロジックを追加 ---
+    // もし今押したボタンが既に設定されているものと同じなら、解除する
+    if (newNature[stat] === targetValue) {
+      newNature[stat] = 1.0;
+    } else {
+      // 既存の他の上昇/下降をリセットする処理
+      if (targetValue === 1.1) {
+        Object.keys(newNature).forEach(key => { if (newNature[key] === 1.1) newNature[key] = 1.0; });
+      }
+      if (targetValue === 0.9) {
+        Object.keys(newNature).forEach(key => { if (newNature[key] === 0.9) newNature[key] = 1.0; });
+      }
+      // 新しい値をセット
+      newNature[stat] = targetValue;
+    }
+  
+    newParty[pokeIndex] = { ...currentPoke, nature: newNature };
+    setMyParty(newParty);
+  };
 
   return (
     <div style={containerStyle}>
@@ -47,7 +94,9 @@ function App() {
         {view === 'register' && (
           <RegisterView 
             myParty={myParty} 
-            onMyPokeClick={(index) => setEditConfig({ type: 'my', index })} 
+            onMyPokeClick={(index) => setEditConfig({ type: 'my', index })}
+            onEvChange={handleEvChange}
+            onNatureChange={handleNatureChange}
             onMoveClick={(pokeIndex, moveIndex) => setEditConfig({ type: 'my', pokeIndex, moveIndex })}
           />
         )}
@@ -67,8 +116,9 @@ function App() {
 }
 
 // --- 登録画面（タブ切り替え） ---
-function RegisterView({ myParty, onMyPokeClick, onMoveClick }) {
+function RegisterView({ myParty, onEvChange, onNatureChange, onMyPokeClick, onMoveClick }) {
   const [activeIdx, setActiveIdx] = useState(0);
+  const totalEV = Object.values(myParty[activeIdx].evs || {}).reduce((a, b) => a + b, 0);
 
   return (
     <div style={{ padding: '10px' }}>
@@ -93,25 +143,95 @@ function RegisterView({ myParty, onMyPokeClick, onMoveClick }) {
         ))}
       </div>
 
-      <div style={registerCardStyle}>
-        <div onClick={() => onMyPokeClick(activeIdx)} style={{ borderBottom: '1px solid #edf2f7', paddingBottom: '8px', marginBottom: '12px', cursor: 'pointer' }}>
-          <div style={{ fontWeight: 'bold', fontSize: '1.2rem', color: myParty[activeIdx].name === "未入力" ? "#a0aec0" : "#2d3748" }}>
-            {myParty[activeIdx].name}
+      {/* 詳細 */}
+      <div style={{ ...registerCardStyle, flex: 1, overflowY: 'auto' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          {/* 名前入力 */}
+          <div onClick={() => onMyPokeClick(activeIdx)} style={{ width: '50vw', borderBottom: '1px solid #edf2f7', paddingBottom: '8px', marginBottom: '12px', cursor: 'pointer' }}>
+            <div style={{ fontWeight: 'bold', fontSize: '1.2rem', color: myParty[activeIdx].name === "未入力" ? "#a0aec0" : "#2d3748" }}>
+              {myParty[activeIdx].name}
+            </div>
+          </div>
+          {/* もちもの入力エリア */}
+          <div onClick={() => onMoveClick(activeIdx, 1)} style={{ ...moveButtonStyle, height: '20px' }}>
+            <span style={{ color: '#cbd5e0' }}>もちもの</span>
           </div>
         </div>
 
-        {/* 技を「縦並び」に変更 */}
+        {/* 技入力エリア */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {(myParty[activeIdx].moves || ["", "", "", ""]).map((move, moveIdx) => (
-            <div 
-              key={moveIdx} 
-              onClick={() => onMoveClick(activeIdx, moveIdx)} 
-              style={{ ...moveButtonStyle, height: '20px' }}
-            >
+            <div key={moveIdx} onClick={() => onMoveClick(activeIdx, moveIdx)} style={{ ...moveButtonStyle, height: '20px' }}>
               {move || <span style={{ color: '#cbd5e0' }}>技{moveIdx + 1}</span>}
             </div>
           ))}
         </div>
+        
+        {/* 能力ポイント指定エリア（H, A, B, C, D, S） */}
+        <div style={{ marginBottom: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>能力ポイント 合計: {totalEV}/66</span>
+            </div>
+            <div>
+              性格【未実装】
+            </div>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {['h', 'a', 'b', 'c', 'd', 's'].map((stat) => {
+              const currentVal = myParty[activeIdx].evs?.[stat] || 0;
+              const natureVal = myParty[activeIdx].nature?.[stat] || 1.0; // ステータスごとの補正値
+              
+              // 1. まず、データベースから現在のポケモンのベースデータを検索する
+              const basePokeData = POKEMON_DB.find(p => p.name === myParty[activeIdx].name);
+              // 2. そのデータが存在すれば、指定した stat (例: 'h', 'a' など) にアクセスする
+              const currentBaseStat = basePokeData ? basePokeData[stat] : 0; 
+            
+              // HPは性格補正対象外なのでボタンを出さない
+              const showNatureBtn = stat !== 'h';
+              
+              return (
+                <div key={stat} style={{ display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '4px' }}>
+                  <label style={{ width: '20px', fontWeight: 'bold', fontSize: '0.8rem' }}>{stat.toUpperCase()}</label>
+                  {/* 性格補正ボタン */}
+                  {showNatureBtn && (
+                    <div style={{ display: 'flex', gap: '2px' }}>
+                      {/* 上昇ボタン */}
+                      <button 
+                        onClick={() => onNatureChange(activeIdx, stat, 'up')}
+                        style={{ ...btnStyle, backgroundColor: natureVal === 1.1 ? '#fecaca' : '#edf2f7' }}
+                      >↑</button>
+                      
+                      {/* 下降ボタン */}
+                      <button 
+                        onClick={() => onNatureChange(activeIdx, stat, 'down')}
+                        style={{ ...btnStyle, backgroundColor: natureVal === 0.9 ? '#bfdbfe' : '#edf2f7' }}
+                      >↓</button>
+                    </div>
+                  )}
+                  {/* MIN ボタン */}
+                  <button onClick={() => onEvChange(activeIdx, stat, 0)} style={btnStyle}>MIN</button>
+                  {/* -/+ */}
+                  <button onClick={() => onEvChange(activeIdx, stat, Math.max(0, currentVal - 1))} style={btnStyle}>-</button>
+                  <button onClick={() => onEvChange(activeIdx, stat, Math.min(32, currentVal + 1))} style={btnStyle}>+</button>
+                  {/* MAX ボタン */}
+                  <button onClick={() => onEvChange(activeIdx, stat, 32)} style={btnStyle}>MAX</button>
+                  {/* 値表示 */}
+                  <div>{calculateStat(stat === 'h', currentBaseStat, currentVal, natureVal)}</div>
+                  <div>(+{currentVal})</div>
+                  {/* スライダー */}
+                  <input 
+                    type="range" min="0" max="32" value={currentVal}
+                    onChange={(e) => onEvChange(activeIdx, stat, parseInt(e.target.value) || 0)}
+                    style={{ flex: 1 }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        
       </div>
     </div>
   );
@@ -205,7 +325,7 @@ const activeTabStyle = { ...tabStyle, color: '#fff', fontWeight: 'bold', borderB
 const resultContainerStyle = { marginTop: '10px', flex: 1, overflowY: 'auto', border: '1px solid #edf2f7', borderRadius: '8px', backgroundColor: '#fdfdfd', padding: '5px' };
 const resultItemStyle = { height: '55px', padding: '8px', borderBottom: '1px solid #edf2f7', cursor: 'pointer', display: 'flex', flexDirection: 'column', justifyContent: 'center' };
 const registerCardStyle = { backgroundColor: '#fff', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' };
-const moveButtonStyle = { backgroundColor: '#f7fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '12px', textAlign: 'center', fontSize: '0.85rem', cursor: 'pointer' };
+const moveButtonStyle = { backgroundColor: '#f7fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '8px', textAlign: 'center', fontSize: '0.85rem', cursor: 'pointer' };
 const inputStyle = { width: '100%', padding: '15px', borderRadius: '10px', border: '2px solid #3182ce', fontSize: '16px', boxSizing: 'border-box', height: '50px' };
 const closeBtnStyle = { width: '100%', marginTop: '15px', padding: '12px', border: 'none', borderRadius: '8px', backgroundColor: '#718096', color: '#fff', fontWeight: 'bold' };
 const matrixWrapperStyle = { overflowX: 'auto', padding: '10px 0' };
@@ -218,6 +338,17 @@ const headerTextStyle = { fontWeight: 'bold', display: '-webkit-box', WebkitBoxO
 const infoTextStyle = { fontSize: '0.5rem' };
 const cellStyle = { width: '15%', height: '55px', border: '1px solid #e2e8f0', textAlign: 'center', fontSize: '1.2rem', backgroundColor: '#fff' };
 
+const btnStyle = {
+  padding: '4px 8px',
+  fontSize: '0.7rem',
+  cursor: 'pointer',
+  backgroundColor: '#edf2f7',
+  border: '1px solid #cbd5e0',
+  borderRadius: '4px',
+  minWidth: '24px'
+};
+
+// 選出タブ
 function SelectionMatrix({ myParty, enemyParty, onEnemyClick }) {
   // 技名からタイプを引く（MOVE_DBは {name: "...", type: "..."} という構造と想定）
   const getMoveType = (moveName) => {
@@ -240,7 +371,7 @@ function SelectionMatrix({ myParty, enemyParty, onEnemyClick }) {
                   {/* ts と type を追加 */}
                   {p.name !== "未入力" && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                      <div style={{...infoTextStyle, color: '#e53e3e', fontWeight: 'bold'}}>TS:{p.s}</div>
+                      <div style={{...infoTextStyle, color: '#e53e3e', fontWeight: 'bold'}}>TS:{calculateStat(false,p.s,32,1.1)}</div>
                       <div style={{...infoTextStyle, color: '#e53e3e' }}>{p.type}</div>
                     </div>
                   )}
@@ -279,7 +410,8 @@ function SelectionMatrix({ myParty, enemyParty, onEnemyClick }) {
                   )}
         
                   <div style={{ marginTop: '4px' }}>
-                    <div style={infoTextStyle}>S:{myPoke.s} {myPoke.type}</div>                  </div>
+                    <div style={infoTextStyle}>S:{calculateStat(false, myPoke.s, myPoke.evs?.s || 0, myPoke.nature?.s || 1.0)} {myPoke.type}</div>
+                  </div>
                 </div>
               </td>
         
@@ -316,7 +448,7 @@ function SelectionMatrix({ myParty, enemyParty, onEnemyClick }) {
                   </div>
                   {/* 素早さ比較アイコン */}
                   <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '2px' }}>
-                    {enPoke.s > 0 && myPoke.s > 0 && (myPoke.s > enPoke.s ? "🚀" : "🐢")}
+                    {enPoke.s > 0 && myPoke.s > 0 && (myPoke.s === enPoke.s ? "🌏" : (myPoke.s > enPoke.s ? "🚀" : "🐢"))}
                   </div>
                   </div>
                   </div>
