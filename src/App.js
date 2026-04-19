@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { POKEMON_DB, MOVE_DB, hiraToKata } from './pokemonData';
+import { POKEMON_DB, MOVE_DB, hiraToKata, getEffectiveness } from './pokemonData';
 
 // --- アプリ本体 ---
 function App() {
@@ -219,6 +219,11 @@ const infoTextStyle = { fontSize: '0.5rem' };
 const cellStyle = { width: '15%', height: '55px', border: '1px solid #e2e8f0', textAlign: 'center', fontSize: '1.2rem', backgroundColor: '#fff' };
 
 function SelectionMatrix({ myParty, enemyParty, onEnemyClick }) {
+  // 技名からタイプを引く（MOVE_DBは {name: "...", type: "..."} という構造と想定）
+  const getMoveType = (moveName) => {
+    const move = MOVE_DB.find(m => m.name === moveName);
+    return move ? move.type : null;
+  };
   return (
     <div style={matrixWrapperStyle}>
       <table style={tableStyle}>
@@ -280,8 +285,41 @@ function SelectionMatrix({ myParty, enemyParty, onEnemyClick }) {
         
               {/* 対面判定セル */}
               {enemyParty.map((enPoke, j) => (
-                <td key={j} style={cellStyle}>
-                  {enPoke.s > 0 && myPoke.s > 0 && (myPoke.s > enPoke.s ? "🚀" : "🐢")}
+                <td key={j} style={{...cellStyle, verticalAlign: 'top', fontSize: '0.6rem'}}>
+                  <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  {/* 相手タイプとの相性 */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
+                      {/* 相手のタイプ(enPoke.type)を分割してそれぞれ判定 */}
+                      <div style={{ fontWeight: 'bold' }}>
+                        {enPoke.type.split(' ').map(enType => {
+                          const eff = getEffectiveness(enType, myPoke.type);
+                          const icons = { 2: '😢', 1: '🙂', 0.5: '☺️', 0: '🤩' };
+                          return icons[eff] || '-';
+                        }).join(' ')}
+                      </div>
+                  </div>
+                  <div>
+                  {/* 技ごとの相性倍率を表示 */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', marginBottom: '4px' }}>
+                    {myPoke.moves.map((moveName, index) => {
+                      const moveType = getMoveType(moveName);
+                      if (!moveName || moveName === "" || !moveType) return <div key={index}>-</div>;
+                      
+                      const eff = getEffectiveness(moveType, enPoke.type);
+                      // 等倍(1)は見にくいので非表示にするなどの調整
+                      return (
+                        <div key={index} style={{ color: eff > 1 ? '#e53e3e' : '#3182ce', fontWeight: 'bold' }}>
+                          {eff}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {/* 素早さ比較アイコン */}
+                  <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: '2px' }}>
+                    {enPoke.s > 0 && myPoke.s > 0 && (myPoke.s > enPoke.s ? "🚀" : "🐢")}
+                  </div>
+                  </div>
+                  </div>
                 </td>
               ))}
             </tr>
